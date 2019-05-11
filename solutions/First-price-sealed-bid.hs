@@ -17,6 +17,10 @@ ands = ops TrueObs AndObs
 boths :: [Contract] -> Contract
 boths = ops Null Both
 
+choices :: (a -> Observation) -> (a -> Contract) -> [a] -> Contract
+choices _ _ []       = Null
+choices p c (x : xs) = Choice (p x) (c x) $ choices p c xs
+
 mkBid :: Timeout -> Timeout -> Timeout -> Cash -> Integer -> Contract
 mkBid choiceTime bidTime maxTime minBid person =
     When
@@ -60,26 +64,17 @@ hasHighestBid personCount person =
     g q = ValueGE v $ bidValue q
 
 finalizeAuction :: Timeout -> Timeout -> Int -> Contract
-finalizeAuction bidTime maxTime personCount = go personCount
+finalizeAuction bidTime maxTime personCount = choices (hasHighestBid personCount) f [1 .. fromIntegral personCount]
   where
-    go n
-        | n <= 0 = Null
-        | otherwise        =
-            let p = fromIntegral n
-            in  Choice
-                    (hasHighestBid personCount p)
-                    (boths $
-                        Pay
-                            (IdentPay p)
-                            p
-                            (1 + fromIntegral personCount)
-                            (bidValue p)
-                            maxTime
-                            Null
-                        : [RedeemCC (IdentCC q) Null | q <- [1 .. p - 1]])
-                    (Both
-                        (RedeemCC (IdentCC p) Null)
-                        (go $ n - 1))
+    f p = boths $
+            Pay
+                (IdentPay p)
+                p
+                (1 + fromIntegral personCount)
+                (bidValue p)
+                maxTime
+                Null
+            : [RedeemCC (IdentCC q) Null | q <- [1 .. fromIntegral personCount], q /= p]
 
 mkAuction :: Timeout -> Timeout -> Timeout -> Cash -> Int -> Contract
 mkAuction choiceTime bidTime maxTime minBid personCount =

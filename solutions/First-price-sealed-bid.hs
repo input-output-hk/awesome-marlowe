@@ -51,17 +51,20 @@ bidValue person = AvailableMoney $ IdentCC person
 hasBid :: Integer -> Observation
 hasBid person = ValueGE (bidValue person) (ConstMoney 1)
 
-hasHighestBid :: Int -> Integer -> Observation
-hasHighestBid personCount person =
+hasHighestBid' :: Integer -> [Integer] -> Observation
+hasHighestBid' person others =
     AndObs
         (hasBid person)
         (AndObs
-            (ands [f q | q <- [1 .. person - 1]])
-            (ands [g q | q <- [person + 1 .. fromIntegral personCount]]))
+            (ands [f q | q <- filter (< person) others])
+            (ands [g q | q <- filter (> person) others]))
   where
     v = bidValue person
     f q = ValueGE v $ AddMoney (bidValue q) (ConstMoney 1)
     g q = ValueGE v $ bidValue q
+
+hasHighestBid :: Int -> Integer -> Observation
+hasHighestBid personCount person = hasHighestBid' person $ filter (/= person) [1 .. fromIntegral personCount]
 
 finalizeAuction :: Timeout -> Timeout -> Int -> Contract
 finalizeAuction bidTime maxTime personCount = choices (hasHighestBid personCount) f [1 .. fromIntegral personCount]

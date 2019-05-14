@@ -3,6 +3,8 @@
 module MyContract(contract) where
 
 import           Control.Monad.State
+import           Data.Map.Strict     (Map)
+import qualified Data.Map.Strict     as Map
 import           Marlowe
 
 -------------------------------------
@@ -72,62 +74,67 @@ choicesM :: (a -> Observation) -> (a -> M Contract) -> [a] -> M Contract
 choicesM _ _ []       = return Null
 choicesM p c (x : xs) = Choice (p x) <$> c x <*> choicesM p c xs
 
-roundM :: Maybe (IdentChoice, Integer) -> Int -> Int -> Int -> Timeout -> Timeout -> Timeout -> M Contract
-roundM mcp index personCount maxRounds bidTime commitTime payTime
+roundM :: Maybe (IdentChoice, Integer) -> Map (Int, Integer) IdentChoice -> Int -> Int -> Int -> Timeout -> Timeout -> Timeout -> M Contract
+roundM mcp choices index personCount maxRounds bidTime commitTime payTime
     | index > maxRounds = return Null
     | otherwise         = atTime (beginTime + bidTime) <$> do
-        xs <- replicateM personCount identChoice
         choicesM
-            (hasLowestBid mcp xs)
-            (cont mcp xs)
+            (hasLowestBid mcp)
+            (cont mcp)
             ([1 .. fromIntegral personCount] ++ [0])
   where
     beginTime = (bidTime + commitTime) * (fromIntegral index - 1)
 
-    choice xs p = xs !! (fromIntegral p - 1)
+    choice p = choices Map.! (index, p)
 
-    bid xs p = MoneyFromChoice (choice xs p) p $ ConstMoney 0
+    bid p = MoneyFromChoice (choice p) p $ ConstMoney 0
 
-    hasChosen xs p =
-        let c = choice xs p
+    hasChosen p =
+        let c = choice p
         in  AndObs
                 (PersonChoseSomething c p)
-                (valueGT (bid xs p) $ ConstMoney 0)
+                (valueGT (bid p) $ ConstMoney 0)
 
-    hasBid Nothing         xs p = hasChosen xs p
-    hasBid (Just (c', p')) xs p =
+    hasBid Nothing         p = hasChosen p
+    hasBid (Just (c', p')) p =
         AndObs
-            (hasChosen xs p)
+            (hasChosen p)
             (valueLT
-                (bid xs p)
+                (bid p)
                 (MoneyFromChoice c' p' $ ConstMoney 0))
 
-    hasLowestBid _   _  0 = TrueObs
-    hasLowestBid mcp xs p =
+    hasLowestBid _   0 = TrueObs
+    hasLowestBid mcp p =
         AndObs
-            (hasBid mcp xs p)
-            (ands [NotObs (hasBid mcp xs q) `OrObs` valueLE (bid xs p) (bid xs q) | q <- [p + 1 .. fromIntegral personCount]])
+            (hasBid mcp p)
+            (ands [NotObs (hasBid mcp q) `OrObs` valueLE (bid p) (bid q) | q <- [p + 1 .. fromIntegral personCount]])
 
     buyer = 1 + fromIntegral personCount
 
-    cont mcp _  0 = roundM mcp (index + 1) personCount maxRounds bidTime commitTime payTime
-    cont _ xs p   = do
+    cont mcp 0 = roundM mcp choices (index + 1) personCount maxRounds bidTime commitTime payTime
+    cont _   p = do
         cc  <- identCC
         pay <- identPay
-        c   <- roundM (Just (choice xs p, p)) (index + 1) personCount maxRounds bidTime commitTime payTime
+        c   <- roundM (Just (choice p, p)) choices (index + 1) personCount maxRounds bidTime commitTime payTime
         let end = beginTime + bidTime + commitTime + payTime
 
         return $ CommitCash
             cc
             buyer
-            (bid xs p)
+            (bid p)
             (beginTime + bidTime + commitTime)
             end
             (Pay pay buyer p (AvailableMoney cc) end Null)
             c
 
 mkAuction :: Int -> Int -> Timeout -> Timeout -> Timeout -> Contract
-mkAuction personCount maxRounds bidTime commitTime = runM . roundM Nothing 1 personCount maxRounds bidTime commitTime
+mkAuction personCount maxRounds bidTime commitTime payTime = runM $ do
+    choices <- foldM f Map.empty [(r, p) | r <- [1 .. maxRounds], p <- [1 .. fromIntegral personCount]]
+    roundM Nothing choices 1 personCount maxRounds bidTime commitTime payTime
+  where
+    f m (r, p) = do
+        c <- identChoice
+        return $ Map.insert (r, p) c m
 
 contract :: Contract
 contract = mkAuction

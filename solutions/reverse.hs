@@ -121,8 +121,8 @@ roundM mcp index personCount maxRounds bidTime commitTime payTime
             cc
             buyer
             (bid xs p)
-            end
             (beginTime + bidTime + commitTime)
+            end
             (Pay pay buyer p (AvailableMoney cc) end Null)
             c
 
@@ -131,8 +131,8 @@ mkAuction personCount maxRounds bidTime commitTime = runM . roundM Nothing 1 per
 
 contract :: Contract
 contract = mkAuction
-      2 -- person count
-      3 -- max rounds
+      3 -- person count
+      2 -- max rounds
       2 -- bid time
       2 -- commit time
       5 -- pay time

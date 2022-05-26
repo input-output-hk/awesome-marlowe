@@ -1,7 +1,7 @@
 # Austin 2022 Hackathon
 
 *   Use `nix develop` to open a development environment.
-*   Use `nix run` to generate the examples and write them to [solutions/](solutions/).
+*   Use `nix run .#marlowe-hackathons:exe:marlowe-hackathons` to generate the examples and write them to [solutions/](solutions/).
 
 
 ## Challenges

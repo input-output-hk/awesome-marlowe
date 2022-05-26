@@ -15,7 +15,7 @@
 -- *  Any number of bidders bid on the contract.
 -- *  Bids may occur in any order.
 -- *  A bid is rejected if it isn't higher than all previous bids.
--- *  A bid is rejected if it isn't accompanied by a deposit of the Lovelace that was bid.
+-- *  A bid is rejected if it isn't immediately followed by a deposit of the Lovelace that was bid.
 -- *  Funds are returned to unsuccessful bidders.
 -- *  There is deadline for depositing the asset.
 -- *  Each bidding round has a deadline.

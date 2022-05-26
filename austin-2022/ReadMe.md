@@ -9,8 +9,12 @@
 
 ### 1. English auctions (difficult)
 
-In live terms, English auctions are where bids are announced by the bidders and winners pay what they bid to receive the object. 
-The common operational method of the format is that it is an ascending bid auction in which bids are open for all to see. 
-The winner is the highest bidder and the price is the highest bid.
+In live terms, English auctions are where bids are announced by the bidders and winners pay what they bid to receive the object. The common operational method of the format is that it is an ascending bid auction in which bids are open for all to see. The winner is the highest bidder and the price is the highest bid.
 
 Solution: [Haskell](app/EnglishAuction.hs) [JSON](solutions/EnglishAuction.json)
+
+
+### 2. Dutch auctions (difficult)
+
+Dutch auctions are the reverse of English auctions whereby the price begins high and is systematically lowered until a buyer accepts the price.
+Solution: [Haskell](app/DutchAuction.hs) [JSON](solutions/DutchAuction.json)

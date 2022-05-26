@@ -12,7 +12,8 @@ extra-source-files : ReadMe.md
 
 executable marlowe-hackathons
   main-is           : Main.hs
-  other-modules     : EnglishAuction
+  other-modules     : DutchAuction
+                      EnglishAuction
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson

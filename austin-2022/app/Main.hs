@@ -21,9 +21,13 @@ module Main (
 
 import Data.Aeson (encodeFile)
 
+import qualified DutchAuction
 import qualified EnglishAuction
 
 
 -- | Generate the contracts.
 main :: IO ()
-main = encodeFile "solutions/EnglishAuction.json" EnglishAuction.example
+main =
+  do
+    encodeFile "solutions/EnglishAuction.json" EnglishAuction.example
+    encodeFile "solutions/DutchAuction.json" DutchAuction.example

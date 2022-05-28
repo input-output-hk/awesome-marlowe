@@ -14,6 +14,7 @@ executable marlowe-hackathons
   main-is           : Main.hs
   other-modules     : DutchAuction
                       EnglishAuction
+                      FirstPriceBid
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson

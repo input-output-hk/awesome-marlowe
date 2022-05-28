@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  $Headers
--- Copyright   :  (c) 2021 IOHK
+-- Copyright   :  (c) 2022 IOHK
 -- License     :  Apache 2.0
 --
 -- Maintainer  :  Brian W Bush <brian.bush@iohk.io>
@@ -23,11 +23,12 @@ import Data.Aeson                (encodeFile)
 import Language.Marlowe.Extended (prettyFragment)
 import System.FilePath           ((</>), (<.>))
 
-import qualified DutchAuction
-import qualified EnglishAuction
-import qualified FirstPriceBid
-import qualified SecondPriceBid
-import qualified ReverseAuction
+import qualified BiddingFee     (example)
+import qualified DutchAuction   (example)
+import qualified EnglishAuction (example)
+import qualified FirstPriceBid  (example)
+import qualified ReverseAuction (example)
+import qualified SecondPriceBid (example)
 
 
 -- | Generate the contracts.
@@ -42,6 +43,7 @@ main =
         , ("FirstPriceBid" , FirstPriceBid.example )
         , ("SecondPriceBid", SecondPriceBid.example)
         , ("ReverseAuction", ReverseAuction.example)
+        , ("BiddingFee"    , BiddingFee.example    )
         ]
       writeMarlowe      name = writeFile  ("solutions" </> "marlowe"       </> name <.> "marlowe") . show . prettyFragment
       writeExtendedJson name = encodeFile ("solutions" </> "extended-json" </> name <.> "json"   )

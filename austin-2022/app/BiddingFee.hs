@@ -8,16 +8,18 @@
 -- Stability   :  Stable
 -- Portability :  Portable
 --
--- | A reverse auction contract for Marlowe.
+-- | A bidding-fee auction contract for Marlowe.
 --
 -- Characteristic of this contract:
--- *  Sellers auctions one unit of an asset.
--- *  Any number of sellers offer on the contract.
+-- *  A seller auctions one unit of an asset.
+-- *  Any number of bidders bid on the contract.
 -- *  Bids may occur in any order.
 -- *  There are a fixed number of bids (rounds of bidding) allowed.
--- *  A bid is rejected if it isn't lower than all previous bids.
--- *  A bid is rejected if it isn't immediately followed by a deposit of the asset, if the bidder didn't already deposit the asset.
--- *  Assets are returned to unsuccessful bidders.
+-- *  A bid is rejected if it isn't higher than all previous bids.
+-- *  A bid is rejected if it isn't immediately followed by a deposit of the Lovelace that was bid.
+-- *  Each bid entails a non-refundable fee paid to the seller.
+-- *  Remaining funds (minus the fees) are returned to unsuccessful bidders.
+-- *  There is deadline for depositing the asset.
 -- *  Each bidding round has a deadline.
 --
 -----------------------------------------------------------------------------
@@ -28,7 +30,7 @@
 {-# LANGUAGE Trustworthy        #-}
 
 
-module ReverseAuction (
+module BiddingFee (
 -- * Entry point
   main
 -- * Contracts
@@ -59,9 +61,9 @@ example =
       asset
 
 
--- | The party that buys the item at auction.
-buyer :: Party
-buyer = Role "Buyer"
+-- | The party that sells the item at auction.
+seller :: Party
+seller = Role "Seller"
 
 
 -- | The quantity of items that is auctioned.
@@ -70,16 +72,21 @@ assetAmount = Constant 1
 
 
 -- | The value of the highest bid.
-lowestOffer :: ValueId
-lowestOffer = "Lowest Offer"
+highestBid :: ValueId
+highestBid = "Highest Bid"
 
 
--- | Create the Marlowe contract for a reverse auction.
+-- | The cost of each bid.
+biddingFee :: Value
+biddingFee = ConstantParam "Bidding Fee"
+
+
+-- | Create the Marlowe contract for a bidding-fee auction.
 makeContract :: Int       -- ^ The number of rounds of bidding.
              -> Int       -- ^ The number of bidders.
              -> Bound     -- ^ The range for valid bids, in Lovelace.
              -> Token     -- ^ The token representing the asset being bid upon.
-             -> Contract  -- ^ The reverse auction.
+             -> Contract  -- ^ The bidding-fee auction.
 makeContract nRounds nBidders bidBounds assetToken =
   let
     bids =
@@ -96,32 +103,29 @@ makeContract nRounds nBidders bidBounds assetToken =
         i <- [1..nRounds]
       ]
   in
-   -- Make the bids, but close if no one bids.
-   makeBids bidBounds assetToken deadlines bids
-     Close
+   -- Deposit the asset, then make the bids, but close if no one bids.
+    makeAssetDeposit assetToken
+      $ makeBids bidBounds assetToken deadlines bids
+        Close
 
 
 -- | Deposit the asset that is the subject of the bidding.
-ensureAssetDeposit :: Token     -- ^ The token representing the asset being bid upon.
-                   -> Timeout   -- ^ The deadline for the deposit.
-                   -> Party     -- ^ The bidder.
-                   -> Contract  -- ^ The contract to be executed after the asset is deposited.
-                   -> Contract  -- ^ The contract to be executed if the asset is not deposited.
-                   -> Contract  -- ^ The contract for the asset deposit and subsequent activity.
-ensureAssetDeposit asset deadline bidder depositContinuation notDepositContinuation =
-  If (AvailableMoney bidder asset `ValueEQ` assetAmount)
-    -- No deposit is necessary.
-    depositContinuation
-    -- The bidder must deposit the asset.
-    (
-      When
-        [
-          Case (Deposit bidder bidder asset assetAmount)
-            depositContinuation
-        ]
-        deadline
-        notDepositContinuation
-    )
+makeAssetDeposit :: Token     -- ^ The token representing the asset being bid upon.
+                 -> Contract  -- ^ The contract to be executed after the asset is deposited.
+                 -> Contract  -- ^ The contract for the asset deposit and subsequent activity.
+makeAssetDeposit asset continuation =
+  let
+    assetDeadline = TimeParam "Deadline to Deposit Asset"
+  in
+    When
+      [
+        -- The seller deposits the asset being auctioned.
+        Case (Deposit seller seller asset assetAmount)
+          continuation
+      ]
+      -- The contract ends if the deposit is not made.
+      assetDeadline
+      Close
 
 
 -- | Make the contract for bids.
@@ -141,34 +145,32 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
         $ let
             bidAmount = ChoiceValue bid
           in
-            -- Check if the bid is lowest so far.
-            If ((bidAmount `ValueLT` UseValue lowestOffer) `OrObs` (Constant 0 `ValueEQ` UseValue lowestOffer))
-              -- Require a deposit if the bid is lowest.
+            -- Check if the bid is highest so far.
+            If (bidAmount `ValueGT` UseValue highestBid)
+              -- Require a deposit if the bid is highest.
               (
-                ensureAssetDeposit assetToken deadline bidder
-                  (
-                    -- Record the new highest amount.
-                    lowestOffer `Let` bidAmount
-                      -- Let the buyer purchase the asset.
-                      $ When
-                          [
-                            Case (Deposit bidder buyer ada bidAmount)
-                              -- Deliver the asset to the buyer.
-                              $ Pay bidder (Party buyer) assetToken assetAmount
-                                Close
-                          ]
-                          -- Handle the remaining bids.
-                          deadline
-                            $ remaining continuation
-                  )
-                  (
-                    -- Handle the remaining bids.
-                    remaining continuation
-                  )
+                When
+                  [
+                    -- Deposit the Lovelace for the bid.
+                    Case (Deposit bidder bidder ada $ bidAmount `SubValue` AvailableMoney bidder ada `AddValue` biddingFee)
+                      -- Pay the bidding fee to the seller.
+                      $ Pay bidder (Account seller) ada biddingFee
+                      -- Record the new highest amount.
+                      $ Let highestBid bidAmount
+                      -- Handle the remaining bids.
+                      $ remaining
+                      -- Make the payment for the asset.
+                      $ Pay bidder (Account seller) ada bidAmount
+                      $ Pay seller (Party bidder) assetToken assetAmount
+                        Close
+                  ]
+                  -- Ignore the bid if the deposit was not made.
+                  deadline
+                    $ remaining continuation
               )
               -- Ignore the bid if it is not highest.
               (
-                -- Handle the remaining bids.
+                -- Handle the remaining bids and finalization.
                 remaining continuation
               )
     |

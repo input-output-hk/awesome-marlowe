@@ -44,3 +44,10 @@ A very difficult variant of this in Marlowe is the Vickrey second-price *sealed-
 Reverse auctions are where the roles of buyer and seller are reversed. Multiple sellers compete to obtain the buyer's business and prices typically decrease over time as new offers are made.
 
 Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseAuction.marlowe), [extended JSON](solutions/extended-json/ReverseAuction.json).
+
+
+### 6. Bidding fee auction (difficult)
+
+A bidding fee auction (also known as a penny auction) requires customers to pay the auction owner for bids, which they can increment an auction price one unit of currency at a time.  On English auctions for example, the price goes up in 1 pence (0.01 GBP) increments.
+
+Solution: [Haskell](app/BiddingFee.hs), [Marlowe](solutions/marlowe/BiddingFee.marlowe), [extended JSON](solutions/extended-json/BiddingFee.json).

@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  $Headers
--- Copyright   :  (c) 2021 IOHK
+-- Copyright   :  (c) 2022 IOHK
 -- License     :  Apache 2.0
 --
 -- Maintainer  :  Brian W Bush <brian.bush@iohk.io>

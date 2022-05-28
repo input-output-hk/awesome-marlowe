@@ -8,18 +8,20 @@
 -- Stability   :  Stable
 -- Portability :  Portable
 --
--- | An English auction contract for Marlowe.
+-- | An second-price open-bid auction contract for Marlowe.
 --
 -- Characteristic of this contract:
 -- *  A seller auctions one unit of an asset.
 -- *  Any number of bidders bid on the contract.
 -- *  Bids may occur in any order.
--- *  There are a fixed number of bids (rounds of bidding) allowed.
--- *  A bid is rejected if it isn't higher than all previous bids.
+-- *  A bid is rejected if it isn't the highest or second highest of the bids so far.
 -- *  A bid is rejected if it isn't immediately followed by a deposit of the Lovelace that was bid.
 -- *  Funds are returned to unsuccessful bidders.
 -- *  There is deadline for depositing the asset.
 -- *  Each bidding round has a deadline.
+-- *  Bidders may only bid once.
+-- *  The winner pays the value of the second highest of the bids, and receives a refund of the difference between the highest and second highest.
+-- *  If there is only one bid, the winner pays their bid.
 --
 -----------------------------------------------------------------------------
 
@@ -29,7 +31,7 @@
 {-# LANGUAGE Trustworthy        #-}
 
 
-module EnglishAuction (
+module SecondPriceBid (
 -- * Entry point
   main
 -- * Contracts
@@ -40,6 +42,7 @@ module EnglishAuction (
 
 import Language.Marlowe.Extended
 
+import Data.List   (permutations)
 import Data.String (fromString)
 
 
@@ -48,14 +51,13 @@ main :: IO ()
 main = printJSON example
 
 
-
 -- | Create an example contract.
 example :: Contract
 example =
   let
     asset = Token "1Ada2Ada3Ada4Ada5Ada6Ada7Ada8Ada9Ada10Ada11Ada12Ada13Ada" "The Asset"
   in
-    makeContract 3 3
+    makeContract 3
       (Bound 2_000_000 1_000_000_000_000)
       asset
 
@@ -75,27 +77,28 @@ highestBid :: ValueId
 highestBid = "Highest Bid"
 
 
+-- | The value of the second highest bid.
+secondHighestBid :: ValueId
+secondHighestBid = "Second highest Bid"
+
+
 -- | Create the Marlowe contract for an English auction.
-makeContract :: Int       -- ^ The number of rounds of bidding.
-             -> Int       -- ^ The number of bidders.
+makeContract :: Int       -- ^ The number of bidders.
              -> Bound     -- ^ The range for valid bids, in Lovelace.
              -> Token     -- ^ The token representing the asset being bid upon.
              -> Contract  -- ^ The English auction.
-makeContract nRounds nBidders bidBounds assetToken =
+makeContract n bidBounds assetToken =
   let
-    bids =
-      [
-        ChoiceId (fromString $ "Bid " <> show i) party
-      |
-        i <- [1..nBidders]
-      , let party = fromString $ "Bidder " <> show i
-      ]
-    deadlines =
-      [
-        TimeParam . fromString $ "Bid Deadline " <> show i
-      |
-        i <- [1..nRounds]
-      ]
+    (bids, deadlines) =
+      unzip
+        [
+          (bid, deadline)
+        |
+          i <- [1..n]
+        , let party = fromString $ "Bidder " <> show i
+              bid = ChoiceId (fromString $ "Bid " <> show i) party
+              deadline = TimeParam . fromString $ "Bid Deadline " <> show i
+        ]
   in
    -- Deposit the asset, then make the bids, but close if no one bids.
     makeAssetDeposit assetToken
@@ -137,36 +140,55 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
       Case (Choice bid [bounds])
         $ let
             bidAmount = ChoiceValue bid
+            winAmount =
+              Cond (UseValue secondHighestBid `ValueEQ` Constant 0)
+                (
+                  UseValue highestBid
+                )
+                (
+                  UseValue secondHighestBid
+                )
           in
-            -- Check if the bid is highest so far.
-            If (bidAmount `ValueGT` UseValue highestBid)
-              -- Require a deposit if the bid is highest.
+            -- Check if the bid is highest or second highest so far.
+            If (bidAmount `ValueGT` UseValue secondHighestBid)
+              -- Require a deposit if the bid is highest or second highest.
               (
                 When
                   [
                     -- Deposit the Lovelace for the bid.
                     Case (Deposit bidder bidder ada bidAmount)
-                      -- Record the new highest amount.
-                      $ Let highestBid bidAmount
-                      -- Handle the remaining bids.
-                      $ remaining
-                      -- Make the payment for the asset.
-                      $ Pay bidder (Party seller) ada bidAmount
-                      $ Pay seller (Party bidder) assetToken assetAmount
-                        Close
+                      -- Check if the bid is highest so far.
+                      $ If (bidAmount `ValueGT` UseValue highestBid)
+                          (
+                            -- Record the new second highest amount.
+                            secondHighestBid `Let` UseValue highestBid
+                            -- Record the new highest amount.
+                            $ highestBid `Let` bidAmount
+                            -- Handle the remaining bids.
+                            $ remaining
+                            -- Make the payment for the asset.
+                            $ Pay bidder (Party seller) ada winAmount
+                            $ Pay seller (Party bidder) assetToken assetAmount
+                              Close
+                          )
+                          (
+                            -- Record the new second highest amount.
+                            secondHighestBid `Let` bidAmount
+                            -- Handle the remaining bids.
+                              $ remaining continuation
+                          )
                   ]
                   deadline
                   -- Ignore the bid if the deposit was not made.
                   $ remaining continuation
               )
-              -- Ignore the bid if it is not highest.
               (
-                -- Handle the remaining bids and finalization.
+                -- Handle the remaining bids.
                 remaining continuation
               )
     |
-      let remaining = makeBids bounds assetToken remainingDeadlines bids
-    , bid@(ChoiceId _ bidder) <- bids
+      bid@(ChoiceId _ bidder) : remainingBids <- permutations bids
+    , let remaining = makeBids bounds assetToken remainingDeadlines remainingBids
     ]
     deadline
     -- End the bidding if no one bids in this round.

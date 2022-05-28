@@ -15,6 +15,7 @@ executable marlowe-hackathons
   other-modules     : DutchAuction
                       EnglishAuction
                       FirstPriceBid
+                      SecondPriceBid
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson

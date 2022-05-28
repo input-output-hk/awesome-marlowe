@@ -26,6 +26,7 @@ import System.FilePath           ((</>), (<.>))
 import qualified DutchAuction
 import qualified EnglishAuction
 import qualified FirstPriceBid
+import qualified SecondPriceBid
 
 
 -- | Generate the contracts.
@@ -38,6 +39,7 @@ main =
           ("EnglishAuction", EnglishAuction.example)
         , ("DutchAuction"  , DutchAuction.example  )
         , ("FirstPriceBid" , FirstPriceBid.example )
+        , ("SecondPriceBid", SecondPriceBid.example)
         ]
       writeMarlowe      name = writeFile  ("solutions" </> "marlowe"       </> name <.> "marlowe") . show . prettyFragment
       writeExtendedJson name = encodeFile ("solutions" </> "extended-json" </> name <.> "json"   )

@@ -23,8 +23,17 @@ Solution: [Haskell](app/DutchAuction.hs), [Marlowe](solutions/marlowe/DutchAucti
 
 ### 3. First-price open-bid (easy)
 
-First-price open-bid auctions are when a single bid is made by all bidding parties and the single highest bidder wins, and pays what they bid.
+First-price open-bid auctions are when a single bid is made by all bidding parties and the single highest bidder wins, and pays what they bid. This contract is not realistic because it can easily be gamed by waiting to bid last.
 
 Solution: [Haskell](app/FirstPriceBid.hs), [Marlowe](solutions/marlowe/FirstPriceBid.marlowe), [extended JSON](solutions/extended-json/FirstPriceBid.json).
 
-A very difficult version of this in Marlowe is the first-price *sealed-bid* auction, where participants commit their bids before any of them reveal their bids.
+A very difficult variant of this in Marlowe is the first-price *sealed-bid* auction, where participants commit their bids before any of them reveal their bids.
+
+
+### 4. Second-price open-bid (intermediate)
+
+Second-price open-bid auctions are when a single bid is made by all bidding parties and the single highest bidder wins, and pays what the second-highest bidder bid. This contract is not realistic because it can easily be gamed through collusion.
+
+Solution: [Haskell](app/SecondPriceBid.hs), [Marlowe](solutions/marlowe/SecondPriceBid.marlowe), [extended JSON](solutions/extended-json/SecondPriceBid.json).
+
+A very difficult variant of this in Marlowe is the Vickrey second-price *sealed-bid* auction, where participants commit their bids before any of them reveal their bids.

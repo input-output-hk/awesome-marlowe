@@ -49,7 +49,7 @@ main = printJSON example
 example :: Contract
 example =
   let
-    asset = Token "1Ada2Ada3Ada" "The Asset"
+    asset = Token "1Ada2Ada3Ada4Ada5Ada6Ada7Ada8Ada9Ada10Ada11Ada12Ada13Ada" "The Asset"
   in
     makeContract 3
       (Bound 2_000_000 1_000_000_000)

@@ -27,6 +27,7 @@ import qualified DutchAuction
 import qualified EnglishAuction
 import qualified FirstPriceBid
 import qualified SecondPriceBid
+import qualified ReverseAuction
 
 
 -- | Generate the contracts.
@@ -40,6 +41,7 @@ main =
         , ("DutchAuction"  , DutchAuction.example  )
         , ("FirstPriceBid" , FirstPriceBid.example )
         , ("SecondPriceBid", SecondPriceBid.example)
+        , ("ReverseAuction", ReverseAuction.example)
         ]
       writeMarlowe      name = writeFile  ("solutions" </> "marlowe"       </> name <.> "marlowe") . show . prettyFragment
       writeExtendedJson name = encodeFile ("solutions" </> "extended-json" </> name <.> "json"   )

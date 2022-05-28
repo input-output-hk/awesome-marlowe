@@ -52,7 +52,7 @@ example =
     asset = Token "1Ada2Ada3Ada4Ada5Ada6Ada7Ada8Ada9Ada10Ada11Ada12Ada13Ada" "The Asset"
   in
     makeContract 3
-      (Bound 2_000_000 1_000_000_000)
+      (Bound 2_000_000 1_002_000_000)
       asset
       5
 
@@ -67,12 +67,12 @@ assetAmount :: Value
 assetAmount = Constant 1
 
 
--- | Create the Marlowe contract for an English auction.
+-- | Create the Marlowe contract for a Dutch auction.
 makeContract :: Int       -- ^ The number of bidders.
              -> Bound     -- ^ The range for valid bids, in Lovelace.
              -> Token     -- ^ The token representing the asset being bid upon.
              -> Integer   -- ^ The number of steps of lowering the price from the top to the bottom of the range.
-             -> Contract  -- ^ The English auction.
+             -> Contract  -- ^ The Dutch auction.
 makeContract n (Bound minimumPrice maximumPrice) assetToken steps =
   let
     bidders = fromString . ("Bidder " <>) . show <$> [1..n]
@@ -107,6 +107,7 @@ makeAssetDeposit asset continuation =
         Case (Deposit seller seller asset assetAmount)
           continuation
       ]
+      -- Otherwise, the contract ends.
       assetDeadline
       Close
 
@@ -132,6 +133,6 @@ makeBids assetToken (deadline : remainingDeadlines) (price : remainingPrices) bi
     |
       bidder <- bidders
     ]
+    -- Continue the bidding if no one bids in this round.
     deadline
-    -- End the bidding if no one bids in this round.
-    $ makeBids assetToken remainingDeadlines remainingPrices bidders continuation
+      $ makeBids assetToken remainingDeadlines remainingPrices bidders continuation

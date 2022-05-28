@@ -16,6 +16,7 @@ executable marlowe-hackathons
                       EnglishAuction
                       FirstPriceBid
                       SecondPriceBid
+                      ReverseAuction 
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson

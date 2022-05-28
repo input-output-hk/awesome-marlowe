@@ -8,7 +8,7 @@
 -- Stability   :  Stable
 -- Portability :  Portable
 --
--- | An second-price open-bid auction contract for Marlowe.
+-- | A second-price open-bid auction contract for Marlowe.
 --
 -- Characteristic of this contract:
 -- *  A seller auctions one unit of an asset.
@@ -82,11 +82,11 @@ secondHighestBid :: ValueId
 secondHighestBid = "Second highest Bid"
 
 
--- | Create the Marlowe contract for an English auction.
+-- | Create the Marlowe contract for a second-price open-bid auction.
 makeContract :: Int       -- ^ The number of bidders.
              -> Bound     -- ^ The range for valid bids, in Lovelace.
              -> Token     -- ^ The token representing the asset being bid upon.
-             -> Contract  -- ^ The English auction.
+             -> Contract  -- ^ The second-price open-bid auction.
 makeContract n bidBounds assetToken =
   let
     (bids, deadlines) =
@@ -120,6 +120,7 @@ makeAssetDeposit asset continuation =
         Case (Deposit seller seller asset assetAmount)
           continuation
       ]
+      -- End the contract if the deposit is not made.
       assetDeadline
       Close
 
@@ -178,9 +179,9 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
                               $ remaining continuation
                           )
                   ]
-                  deadline
                   -- Ignore the bid if the deposit was not made.
-                  $ remaining continuation
+                  deadline
+                    $ remaining continuation
               )
               (
                 -- Handle the remaining bids.
@@ -190,6 +191,6 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
       bid@(ChoiceId _ bidder) : remainingBids <- permutations bids
     , let remaining = makeBids bounds assetToken remainingDeadlines remainingBids
     ]
-    deadline
     -- End the bidding if no one bids in this round.
+    deadline
     continuation

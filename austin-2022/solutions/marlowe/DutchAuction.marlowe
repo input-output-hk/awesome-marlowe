@@ -12,13 +12,13 @@
                   (Role "Bidder 1")
                   (Role "Bidder 1")
                   (Token "" "")
-                  (Constant 1000000000))
+                  (Constant 1002000000))
                (Pay
                   (Role "Bidder 1")
                   (Party
                      (Role "Seller"))
                   (Token "" "")
-                  (Constant 1000000000)
+                  (Constant 1002000000)
                   (Pay
                      (Role "Seller")
                      (Party
@@ -31,13 +31,13 @@
                   (Role "Bidder 2")
                   (Role "Bidder 2")
                   (Token "" "")
-                  (Constant 1000000000))
+                  (Constant 1002000000))
                (Pay
                   (Role "Bidder 2")
                   (Party
                      (Role "Seller"))
                   (Token "" "")
-                  (Constant 1000000000)
+                  (Constant 1002000000)
                   (Pay
                      (Role "Seller")
                      (Party
@@ -50,13 +50,13 @@
                   (Role "Bidder 3")
                   (Role "Bidder 3")
                   (Token "" "")
-                  (Constant 1000000000))
+                  (Constant 1002000000))
                (Pay
                   (Role "Bidder 3")
                   (Party
                      (Role "Seller"))
                   (Token "" "")
-                  (Constant 1000000000)
+                  (Constant 1002000000)
                   (Pay
                      (Role "Seller")
                      (Party
@@ -69,13 +69,13 @@
                      (Role "Bidder 1")
                      (Role "Bidder 1")
                      (Token "" "")
-                     (Constant 750500000))
+                     (Constant 752000000))
                   (Pay
                      (Role "Bidder 1")
                      (Party
                         (Role "Seller"))
                      (Token "" "")
-                     (Constant 750500000)
+                     (Constant 752000000)
                      (Pay
                         (Role "Seller")
                         (Party
@@ -88,13 +88,13 @@
                      (Role "Bidder 2")
                      (Role "Bidder 2")
                      (Token "" "")
-                     (Constant 750500000))
+                     (Constant 752000000))
                   (Pay
                      (Role "Bidder 2")
                      (Party
                         (Role "Seller"))
                      (Token "" "")
-                     (Constant 750500000)
+                     (Constant 752000000)
                      (Pay
                         (Role "Seller")
                         (Party
@@ -107,13 +107,13 @@
                      (Role "Bidder 3")
                      (Role "Bidder 3")
                      (Token "" "")
-                     (Constant 750500000))
+                     (Constant 752000000))
                   (Pay
                      (Role "Bidder 3")
                      (Party
                         (Role "Seller"))
                      (Token "" "")
-                     (Constant 750500000)
+                     (Constant 752000000)
                      (Pay
                         (Role "Seller")
                         (Party
@@ -126,13 +126,13 @@
                         (Role "Bidder 1")
                         (Role "Bidder 1")
                         (Token "" "")
-                        (Constant 501000000))
+                        (Constant 502000000))
                      (Pay
                         (Role "Bidder 1")
                         (Party
                            (Role "Seller"))
                         (Token "" "")
-                        (Constant 501000000)
+                        (Constant 502000000)
                         (Pay
                            (Role "Seller")
                            (Party
@@ -145,13 +145,13 @@
                         (Role "Bidder 2")
                         (Role "Bidder 2")
                         (Token "" "")
-                        (Constant 501000000))
+                        (Constant 502000000))
                      (Pay
                         (Role "Bidder 2")
                         (Party
                            (Role "Seller"))
                         (Token "" "")
-                        (Constant 501000000)
+                        (Constant 502000000)
                         (Pay
                            (Role "Seller")
                            (Party
@@ -164,13 +164,13 @@
                         (Role "Bidder 3")
                         (Role "Bidder 3")
                         (Token "" "")
-                        (Constant 501000000))
+                        (Constant 502000000))
                      (Pay
                         (Role "Bidder 3")
                         (Party
                            (Role "Seller"))
                         (Token "" "")
-                        (Constant 501000000)
+                        (Constant 502000000)
                         (Pay
                            (Role "Seller")
                            (Party
@@ -183,13 +183,13 @@
                            (Role "Bidder 1")
                            (Role "Bidder 1")
                            (Token "" "")
-                           (Constant 251500000))
+                           (Constant 252000000))
                         (Pay
                            (Role "Bidder 1")
                            (Party
                               (Role "Seller"))
                            (Token "" "")
-                           (Constant 251500000)
+                           (Constant 252000000)
                            (Pay
                               (Role "Seller")
                               (Party
@@ -202,13 +202,13 @@
                            (Role "Bidder 2")
                            (Role "Bidder 2")
                            (Token "" "")
-                           (Constant 251500000))
+                           (Constant 252000000))
                         (Pay
                            (Role "Bidder 2")
                            (Party
                               (Role "Seller"))
                            (Token "" "")
-                           (Constant 251500000)
+                           (Constant 252000000)
                            (Pay
                               (Role "Seller")
                               (Party
@@ -221,13 +221,13 @@
                            (Role "Bidder 3")
                            (Role "Bidder 3")
                            (Token "" "")
-                           (Constant 251500000))
+                           (Constant 252000000))
                         (Pay
                            (Role "Bidder 3")
                            (Party
                               (Role "Seller"))
                            (Token "" "")
-                           (Constant 251500000)
+                           (Constant 252000000)
                            (Pay
                               (Role "Seller")
                               (Party

@@ -37,3 +37,10 @@ Second-price open-bid auctions are when a single bid is made by all bidding part
 Solution: [Haskell](app/SecondPriceBid.hs), [Marlowe](solutions/marlowe/SecondPriceBid.marlowe), [extended JSON](solutions/extended-json/SecondPriceBid.json).
 
 A very difficult variant of this in Marlowe is the Vickrey second-price *sealed-bid* auction, where participants commit their bids before any of them reveal their bids.
+
+
+### 5. Reverse auction (intermediate)
+
+Reverse auctions are where the roles of buyer and seller are reversed. Multiple sellers compete to obtain the buyer's business and prices typically decrease over time as new offers are made.
+
+Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseAuction.marlowe), [extended JSON](solutions/extended-json/ReverseAuction.json).

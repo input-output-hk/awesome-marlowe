@@ -8,7 +8,7 @@
 -- Stability   :  Stable
 -- Portability :  Portable
 --
--- | An first-price open-bid auction contract for Marlowe.
+-- | A first-price open-bid auction contract for Marlowe.
 --
 -- Characteristic of this contract:
 -- *  A seller auctions one unit of an asset.
@@ -75,11 +75,11 @@ highestBid :: ValueId
 highestBid = "Highest Bid"
 
 
--- | Create the Marlowe contract for an English auction.
+-- | Create the Marlowe contract for a first-price open-bid auction.
 makeContract :: Int       -- ^ The number of bidders.
              -> Bound     -- ^ The range for valid bids, in Lovelace.
              -> Token     -- ^ The token representing the asset being bid upon.
-             -> Contract  -- ^ The English auction.
+             -> Contract  -- ^ The first-price open-bid auction.
 makeContract n bidBounds assetToken =
   let
     (bids, deadlines) =
@@ -113,6 +113,7 @@ makeAssetDeposit asset continuation =
         Case (Deposit seller seller asset assetAmount)
           continuation
       ]
+      -- End the contract if the deposit was not made.
       assetDeadline
       Close
 
@@ -151,19 +152,19 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
                       $ Pay seller (Party bidder) assetToken assetAmount
                         Close
                   ]
-                  deadline
                   -- Ignore the bid if the deposit was not made.
-                  $ remaining continuation
+                  deadline
+                    $ remaining continuation
               )
               -- Ignore the bid if it is not highest.
               (
-                -- Handle the remaining bids and finalization.
+                -- Handle the remaining bids.
                 remaining continuation
               )
     |
       bid@(ChoiceId _ bidder) : remainingBids <- permutations bids
     , let remaining = makeBids bounds assetToken remainingDeadlines remainingBids
     ]
-    deadline
     -- End the bidding if no one bids in this round.
+    deadline
     continuation

@@ -19,7 +19,9 @@ module Main (
 ) where
 
 
-import Data.Aeson (encodeFile)
+import Data.Aeson                (encodeFile)
+import Language.Marlowe.Extended (prettyFragment)
+import System.FilePath           ((</>), (<.>))
 
 import qualified DutchAuction
 import qualified EnglishAuction
@@ -29,5 +31,13 @@ import qualified EnglishAuction
 main :: IO ()
 main =
   do
-    encodeFile "solutions/EnglishAuction.json" EnglishAuction.example
-    encodeFile "solutions/DutchAuction.json" DutchAuction.example
+    let
+      examples =
+        [
+          ("EnglishAuction", EnglishAuction.example)
+        , ("DutchAuction"  , DutchAuction.example  )
+        ]
+      writeMarlowe      name = writeFile  ("solutions" </> "marlowe"       </> name <.> "marlowe") . show . prettyFragment
+      writeExtendedJson name = encodeFile ("solutions" </> "extended.json" </> name <.> "json"   )
+    mapM_ (uncurry writeMarlowe     ) examples
+    mapM_ (uncurry writeExtendedJson) examples

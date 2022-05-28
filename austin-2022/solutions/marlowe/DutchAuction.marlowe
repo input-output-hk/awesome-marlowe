@@ -1,0 +1,293 @@
+
+(When [
+   (Case
+      (Deposit
+         (Role "Seller")
+         (Role "Seller")
+         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+         (Constant 1))
+      (When [
+            (Case
+               (Deposit
+                  (Role "Bidder 1")
+                  (Role "Bidder 1")
+                  (Token "" "")
+                  (Constant 1000000000))
+               (Pay
+                  (Role "Bidder 1")
+                  (Party
+                     (Role "Seller"))
+                  (Token "" "")
+                  (Constant 1000000000)
+                  (Pay
+                     (Role "Seller")
+                     (Party
+                        (Role "Bidder 1"))
+                     (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                     (Constant 1) Close)))
+            ,
+            (Case
+               (Deposit
+                  (Role "Bidder 2")
+                  (Role "Bidder 2")
+                  (Token "" "")
+                  (Constant 1000000000))
+               (Pay
+                  (Role "Bidder 2")
+                  (Party
+                     (Role "Seller"))
+                  (Token "" "")
+                  (Constant 1000000000)
+                  (Pay
+                     (Role "Seller")
+                     (Party
+                        (Role "Bidder 2"))
+                     (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                     (Constant 1) Close)))
+            ,
+            (Case
+               (Deposit
+                  (Role "Bidder 3")
+                  (Role "Bidder 3")
+                  (Token "" "")
+                  (Constant 1000000000))
+               (Pay
+                  (Role "Bidder 3")
+                  (Party
+                     (Role "Seller"))
+                  (Token "" "")
+                  (Constant 1000000000)
+                  (Pay
+                     (Role "Seller")
+                     (Party
+                        (Role "Bidder 3"))
+                     (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                     (Constant 1) Close)))] (TimeParam "Bid Deadline 1")
+         (When [
+               (Case
+                  (Deposit
+                     (Role "Bidder 1")
+                     (Role "Bidder 1")
+                     (Token "" "")
+                     (Constant 750500000))
+                  (Pay
+                     (Role "Bidder 1")
+                     (Party
+                        (Role "Seller"))
+                     (Token "" "")
+                     (Constant 750500000)
+                     (Pay
+                        (Role "Seller")
+                        (Party
+                           (Role "Bidder 1"))
+                        (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                        (Constant 1) Close)))
+               ,
+               (Case
+                  (Deposit
+                     (Role "Bidder 2")
+                     (Role "Bidder 2")
+                     (Token "" "")
+                     (Constant 750500000))
+                  (Pay
+                     (Role "Bidder 2")
+                     (Party
+                        (Role "Seller"))
+                     (Token "" "")
+                     (Constant 750500000)
+                     (Pay
+                        (Role "Seller")
+                        (Party
+                           (Role "Bidder 2"))
+                        (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                        (Constant 1) Close)))
+               ,
+               (Case
+                  (Deposit
+                     (Role "Bidder 3")
+                     (Role "Bidder 3")
+                     (Token "" "")
+                     (Constant 750500000))
+                  (Pay
+                     (Role "Bidder 3")
+                     (Party
+                        (Role "Seller"))
+                     (Token "" "")
+                     (Constant 750500000)
+                     (Pay
+                        (Role "Seller")
+                        (Party
+                           (Role "Bidder 3"))
+                        (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                        (Constant 1) Close)))] (TimeParam "Bid Deadline 2")
+            (When [
+                  (Case
+                     (Deposit
+                        (Role "Bidder 1")
+                        (Role "Bidder 1")
+                        (Token "" "")
+                        (Constant 501000000))
+                     (Pay
+                        (Role "Bidder 1")
+                        (Party
+                           (Role "Seller"))
+                        (Token "" "")
+                        (Constant 501000000)
+                        (Pay
+                           (Role "Seller")
+                           (Party
+                              (Role "Bidder 1"))
+                           (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                           (Constant 1) Close)))
+                  ,
+                  (Case
+                     (Deposit
+                        (Role "Bidder 2")
+                        (Role "Bidder 2")
+                        (Token "" "")
+                        (Constant 501000000))
+                     (Pay
+                        (Role "Bidder 2")
+                        (Party
+                           (Role "Seller"))
+                        (Token "" "")
+                        (Constant 501000000)
+                        (Pay
+                           (Role "Seller")
+                           (Party
+                              (Role "Bidder 2"))
+                           (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                           (Constant 1) Close)))
+                  ,
+                  (Case
+                     (Deposit
+                        (Role "Bidder 3")
+                        (Role "Bidder 3")
+                        (Token "" "")
+                        (Constant 501000000))
+                     (Pay
+                        (Role "Bidder 3")
+                        (Party
+                           (Role "Seller"))
+                        (Token "" "")
+                        (Constant 501000000)
+                        (Pay
+                           (Role "Seller")
+                           (Party
+                              (Role "Bidder 3"))
+                           (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                           (Constant 1) Close)))] (TimeParam "Bid Deadline 3")
+               (When [
+                     (Case
+                        (Deposit
+                           (Role "Bidder 1")
+                           (Role "Bidder 1")
+                           (Token "" "")
+                           (Constant 251500000))
+                        (Pay
+                           (Role "Bidder 1")
+                           (Party
+                              (Role "Seller"))
+                           (Token "" "")
+                           (Constant 251500000)
+                           (Pay
+                              (Role "Seller")
+                              (Party
+                                 (Role "Bidder 1"))
+                              (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                              (Constant 1) Close)))
+                     ,
+                     (Case
+                        (Deposit
+                           (Role "Bidder 2")
+                           (Role "Bidder 2")
+                           (Token "" "")
+                           (Constant 251500000))
+                        (Pay
+                           (Role "Bidder 2")
+                           (Party
+                              (Role "Seller"))
+                           (Token "" "")
+                           (Constant 251500000)
+                           (Pay
+                              (Role "Seller")
+                              (Party
+                                 (Role "Bidder 2"))
+                              (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                              (Constant 1) Close)))
+                     ,
+                     (Case
+                        (Deposit
+                           (Role "Bidder 3")
+                           (Role "Bidder 3")
+                           (Token "" "")
+                           (Constant 251500000))
+                        (Pay
+                           (Role "Bidder 3")
+                           (Party
+                              (Role "Seller"))
+                           (Token "" "")
+                           (Constant 251500000)
+                           (Pay
+                              (Role "Seller")
+                              (Party
+                                 (Role "Bidder 3"))
+                              (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                              (Constant 1) Close)))] (TimeParam "Bid Deadline 4")
+                  (When [
+                        (Case
+                           (Deposit
+                              (Role "Bidder 1")
+                              (Role "Bidder 1")
+                              (Token "" "")
+                              (Constant 2000000))
+                           (Pay
+                              (Role "Bidder 1")
+                              (Party
+                                 (Role "Seller"))
+                              (Token "" "")
+                              (Constant 2000000)
+                              (Pay
+                                 (Role "Seller")
+                                 (Party
+                                    (Role "Bidder 1"))
+                                 (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                 (Constant 1) Close)))
+                        ,
+                        (Case
+                           (Deposit
+                              (Role "Bidder 2")
+                              (Role "Bidder 2")
+                              (Token "" "")
+                              (Constant 2000000))
+                           (Pay
+                              (Role "Bidder 2")
+                              (Party
+                                 (Role "Seller"))
+                              (Token "" "")
+                              (Constant 2000000)
+                              (Pay
+                                 (Role "Seller")
+                                 (Party
+                                    (Role "Bidder 2"))
+                                 (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                 (Constant 1) Close)))
+                        ,
+                        (Case
+                           (Deposit
+                              (Role "Bidder 3")
+                              (Role "Bidder 3")
+                              (Token "" "")
+                              (Constant 2000000))
+                           (Pay
+                              (Role "Bidder 3")
+                              (Party
+                                 (Role "Seller"))
+                              (Token "" "")
+                              (Constant 2000000)
+                              (Pay
+                                 (Role "Seller")
+                                 (Party
+                                    (Role "Bidder 3"))
+                                 (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                 (Constant 1) Close)))] (TimeParam "Bid Deadline 5") Close))))))] (TimeParam "Deadline to Deposit Asset") Close)

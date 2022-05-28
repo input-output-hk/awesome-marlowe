@@ -17,5 +17,6 @@ executable marlowe-hackathons
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson
+                    , filepath
                     , marlowe
   ghc-options       : -Wall

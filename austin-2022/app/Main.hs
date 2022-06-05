@@ -29,6 +29,7 @@ import qualified EnglishAuction (example)
 import qualified FirstPriceBid  (example)
 import qualified ReverseAuction (example)
 import qualified SecondPriceBid (example)
+import qualified StableCoin     (example)
 
 
 -- | Generate the contracts.
@@ -44,6 +45,7 @@ main =
         , ("SecondPriceBid", SecondPriceBid.example)
         , ("ReverseAuction", ReverseAuction.example)
         , ("BiddingFee"    , BiddingFee.example    )
+        , ("StableCoin"    , StableCoin.example    )
         ]
       writeMarlowe      name = writeFile  ("solutions" </> "marlowe"       </> name <.> "marlowe") . show . prettyFragment
       writeExtendedJson name = encodeFile ("solutions" </> "extended-json" </> name <.> "json"   )

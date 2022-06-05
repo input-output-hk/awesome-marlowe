@@ -17,8 +17,9 @@ executable marlowe-hackathons
                       DutchAuction
                       EnglishAuction
                       FirstPriceBid
-                      SecondPriceBid
                       ReverseAuction
+                      SecondPriceBid
+                      StableCoin
   hs-source-dirs    : app
   build-depends     : base >= 4.9 && < 5
                     , aeson

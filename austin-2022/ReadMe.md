@@ -51,3 +51,10 @@ Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseA
 A bidding fee auction (also known as a penny auction) requires customers to pay the auction owner for bids, which they can increment an auction price one unit of currency at a time.  On English auctions for example, the price goes up in 1 pence (0.01 GBP) increments.
 
 Solution: [Haskell](app/BiddingFee.hs), [Marlowe](solutions/marlowe/BiddingFee.marlowe), [extended JSON](solutions/extended-json/BiddingFee.json).
+
+
+### 7. Stable coin (easy)
+
+The Marlowe analog of a stable coin is a contract that pays the party the value in a base currency (say, USD) of the ADA that they initially deposit in a contract. A counterparty deposits collateral, according to a specified *reserve ratio* (i.e., the ratio of the total ADA in the contract to the ADA deposited by the party), to cover price changes in ADA. When the party withdraws their funds, they receive the ADA corresponding to the base-currency value initially deposited, and the counterparty receives the remaining ADA.
+
+Solution: [Haskell](app/StableCoin.hs), [Marlowe](solutions/marlowe/StableCoin.marlowe), [extended JSON](solutions/extended-json/StableCoin.json).

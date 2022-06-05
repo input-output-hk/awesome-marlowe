@@ -14,7 +14,7 @@
 -- *  A seller auctions one unit of an asset.
 -- *  Any number of bidders bid on the contract.
 -- *  The selling price is dropped in equal steps.
--- *  The first bidder to deposit the price winds the asset.
+-- *  The first bidder to deposit the price wins the asset.
 -- *  There is deadline for depositing the asset.
 -- *  Each bidding round has a deadline.
 --

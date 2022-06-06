@@ -11,14 +11,14 @@
 
 In live terms, English auctions are where bids are announced by the bidders and winners pay what they bid to receive the object. The common operational method of the format is that it is an ascending bid auction in which bids are open for all to see. The winner is the highest bidder and the price is the highest bid.
 
-Solution: [Haskell](app/EnglishAuction.hs), [Marlowe](solutions/marlowe/EnglishAuction.marlowe), [extended JSON](solutions/extended-json/EnglishAuction.json).
+Solution: [Haskell](app/EnglishAuction.hs), [Marlowe](solutions/marlowe/EnglishAuction.marlowe), [extended JSON](solutions/extended-json/EnglishAuction.json), [TypeScript](solutions/typescript/EnglishAuction.ts).
 
 
 ### 2. Dutch auctions (difficult)
 
 Dutch auctions are the reverse of English auctions whereby the price begins high and is systematically lowered until a buyer accepts the price.
 
-Solution: [Haskell](app/DutchAuction.hs), [Marlowe](solutions/marlowe/DutchAuction.marlowe), [extended JSON](solutions/extended-json/DutchAuction.json).
+Solution: [Haskell](app/DutchAuction.hs), [Marlowe](solutions/marlowe/DutchAuction.marlowe), [extended JSON](solutions/extended-json/DutchAuction.json), [TypeScript](solutions/typescript/DutchAuction.ts).
 
 
 ### 3. First-price open-bid (easy)

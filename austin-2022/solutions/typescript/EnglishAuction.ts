@@ -8,6 +8,23 @@ import {
     Case, Timeout, ETimeout, TimeParam, Contract
 } from 'marlowe-js';
 
+/*
+
+An English auction contract for Marlowe.
+
+Characteristic of this contract:
+*  A seller auctions one unit of an asset.
+*  Any number of bidders bid on the contract.
+*  Bids may occur in any order.
+*  There are a fixed number of bids (rounds of bidding) allowed.
+*  A bid is rejected if it isn't higher than all previous bids.
+*  A bid is rejected if it isn't immediately followed by a deposit of the Lovelace that was bid.
+*  Funds are returned to unsuccessful bidders.
+*  There is deadline for depositing the asset.
+*  Each bidding round has a deadline.
+
+*/
+
 (function (): Contract {
 
   // The party that sells the item at auction.
@@ -74,6 +91,10 @@ import {
             const bidder = bid.choice_owner
             const bidAmount = ChoiceValue(bid)
             function remaining(continuation : Contract) : Contract {return makeBids(bounds, assetToken, remainingDeadlines, bids, continuation)}
+            function disqualify() : Contract {
+              const otherBidders = bids.filter(bid1 => bid1 != bid)
+              return makeBids(bounds, assetToken, remainingDeadlines, otherBidders, continuation)
+            }
             // Let the bidder make their bid.
             return Case(Choice(bid, [bounds])
             // Check if the bid is highest so far.
@@ -96,13 +117,12 @@ import {
                       )
                     )
                   ]
-                // Ignore the bid if the deposit was not made.
+                // Disqualify the bidder if the deposit was not made.
                 , deadline
-                , remaining(continuation)
+                , disqualify()
                 )
-              // Ignore the bid if it is not highest.
-              // Handle the remaining bids and finalization.
-              ,  remaining(continuation)
+              // Disqualify the bidber if the bid is not highest.
+              ,  disqualify()
               )
             )
           }

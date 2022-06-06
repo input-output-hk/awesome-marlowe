@@ -8,18 +8,15 @@
 -- Stability   :  Stable
 -- Portability :  Portable
 --
--- | A first-price open-bid auction contract for Marlowe.
+-- | The Marlowe analog of a stable coin.
 --
 -- Characteristic of this contract:
--- *  A seller auctions one unit of an asset.
--- *  Any number of bidders bid on the contract.
--- *  Bids may occur in any order.
--- *  A bid is rejected if it isn't higher than all previous bids.
--- *  A bid is rejected if it isn't immediately followed by a deposit of the Lovelace that was bid.
--- *  Funds are returned to unsuccessful bidders.
--- *  There is deadline for depositing the asset.
--- *  Each bidding round has a deadline.
--- *  Bidders may only bid once.
+-- *  The party deposits ADA.
+-- *  An oracle records the price of ADA, and hence the value of ADA deposited.
+-- *  The counterparty deposits collateral to cover changes in the ADA price.
+-- *  The party signals that they are want to withdraw the funds.
+-- *  The oracle records the price of ADA again.
+-- *  The party receives ADA equivalent to the current value of their original deposit.
 --
 -----------------------------------------------------------------------------
 

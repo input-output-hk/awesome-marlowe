@@ -179,17 +179,19 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
                               $ remaining continuation
                           )
                   ]
-                  -- Ignore the bid if the deposit was not made.
+                  -- Ignore the bid and disqualify the bidder if the deposit was not made.
                   deadline
-                    $ remaining continuation
+                    $ disqualify continuation
               )
               (
                 -- Handle the remaining bids.
-                remaining continuation
+                disqualify continuation
               )
     |
       bid@(ChoiceId _ bidder) : remainingBids <- permutations bids
     , let remaining = makeBids bounds assetToken remainingDeadlines remainingBids
+          disqualify = makeBids bounds assetToken remainingDeadlines $ filter (/= bid) bids
+
     ]
     -- End the bidding if no one bids in this round.
     deadline

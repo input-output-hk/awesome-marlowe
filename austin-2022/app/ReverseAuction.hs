@@ -161,19 +161,22 @@ makeBids bounds assetToken (deadline : remainingDeadlines) bids continuation =
                           deadline
                             $ remaining continuation
                   )
+                  -- Ignore the bid and disqualify the bidder if it is not lowest.
                   (
                     -- Handle the remaining bids.
-                    remaining continuation
+                    disqualify continuation
                   )
               )
-              -- Ignore the bid if it is not highest.
+              -- Ignore the bid and disqualify the bidder if it is not lowest.
               (
                 -- Handle the remaining bids.
-                remaining continuation
+                disqualify continuation
               )
     |
-      let remaining = makeBids bounds assetToken remainingDeadlines bids
-    , bid@(ChoiceId _ bidder) <- bids
+      bid@(ChoiceId _ bidder) <- bids
+    , let remaining = makeBids bounds assetToken remainingDeadlines bids
+          disqualify = makeBids bounds assetToken remainingDeadlines $ filter (/= bid) bids
+
     ]
     -- End the bidding if no one bids in this round.
     deadline

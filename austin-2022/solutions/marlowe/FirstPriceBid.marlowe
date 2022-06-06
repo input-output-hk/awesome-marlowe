@@ -3206,190 +3206,6 @@
                      (When [
                            (Case
                               (Choice
-                                 (ChoiceId "Bid 2"
-                                    (Role "Bidder 2")) [
-                                 (Bound 2000000 1000000000000)])
-                              (If
-                                 (ValueGT
-                                    (ChoiceValue
-                                       (ChoiceId "Bid 2"
-                                          (Role "Bidder 2")))
-                                    (UseValue "Highest Bid"))
-                                 (When [
-                                    (Case
-                                       (Deposit
-                                          (Role "Bidder 2")
-                                          (Role "Bidder 2")
-                                          (Token "" "")
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 2"
-                                                (Role "Bidder 2"))))
-                                       (Let "Highest Bid"
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 2"
-                                                (Role "Bidder 2")))
-                                          (When [
-                                             (Case
-                                                (Choice
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")) [
-                                                   (Bound 2000000 1000000000000)])
-                                                (If
-                                                   (ValueGT
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (UseValue "Highest Bid"))
-                                                   (When [
-                                                      (Case
-                                                         (Deposit
-                                                            (Role "Bidder 1")
-                                                            (Role "Bidder 1")
-                                                            (Token "" "")
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 1"
-                                                                  (Role "Bidder 1"))))
-                                                         (Let "Highest Bid"
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 1"
-                                                                  (Role "Bidder 1")))
-                                                            (Pay
-                                                               (Role "Bidder 1")
-                                                               (Party
-                                                                  (Role "Seller"))
-                                                               (Token "" "")
-                                                               (ChoiceValue
-                                                                  (ChoiceId "Bid 1"
-                                                                     (Role "Bidder 1")))
-                                                               (Pay
-                                                                  (Role "Seller")
-                                                                  (Party
-                                                                     (Role "Bidder 1"))
-                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                                      (Pay
-                                                         (Role "Bidder 2")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 2"
-                                                               (Role "Bidder 2")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 2"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close)))
-                                                   (Pay
-                                                      (Role "Bidder 2")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 2"
-                                                            (Role "Bidder 2")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 2"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                             (Pay
-                                                (Role "Bidder 2")
-                                                (Party
-                                                   (Role "Seller"))
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 2"
-                                                      (Role "Bidder 2")))
-                                                (Pay
-                                                   (Role "Seller")
-                                                   (Party
-                                                      (Role "Bidder 2"))
-                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
-                                    (When [
-                                       (Case
-                                          (Choice
-                                             (ChoiceId "Bid 1"
-                                                (Role "Bidder 1")) [
-                                             (Bound 2000000 1000000000000)])
-                                          (If
-                                             (ValueGT
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")))
-                                                (UseValue "Highest Bid"))
-                                             (When [
-                                                (Case
-                                                   (Deposit
-                                                      (Role "Bidder 1")
-                                                      (Role "Bidder 1")
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1"))))
-                                                   (Let "Highest Bid"
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (Pay
-                                                         (Role "Bidder 1")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 1"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                                 (When [
-                                    (Case
-                                       (Choice
-                                          (ChoiceId "Bid 1"
-                                             (Role "Bidder 1")) [
-                                          (Bound 2000000 1000000000000)])
-                                       (If
-                                          (ValueGT
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 1"
-                                                   (Role "Bidder 1")))
-                                             (UseValue "Highest Bid"))
-                                          (When [
-                                             (Case
-                                                (Deposit
-                                                   (Role "Bidder 1")
-                                                   (Role "Bidder 1")
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1"))))
-                                                (Let "Highest Bid"
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (Pay
-                                                      (Role "Bidder 1")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 1"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                           ,
-                           (Case
-                              (Choice
                                  (ChoiceId "Bid 1"
                                     (Role "Bidder 1")) [
                                  (Bound 2000000 1000000000000)])
@@ -3570,71 +3386,85 @@
                                                          (Party
                                                             (Role "Bidder 2"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
-                  (When [
-                        (Case
-                           (Choice
-                              (ChoiceId "Bid 2"
-                                 (Role "Bidder 2")) [
-                              (Bound 2000000 1000000000000)])
-                           (If
-                              (ValueGT
-                                 (ChoiceValue
-                                    (ChoiceId "Bid 2"
-                                       (Role "Bidder 2")))
-                                 (UseValue "Highest Bid"))
-                              (When [
-                                 (Case
-                                    (Deposit
-                                       (Role "Bidder 2")
-                                       (Role "Bidder 2")
-                                       (Token "" "")
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 2"
-                                             (Role "Bidder 2"))))
-                                    (Let "Highest Bid"
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 2"
-                                             (Role "Bidder 2")))
-                                       (When [
-                                          (Case
-                                             (Choice
-                                                (ChoiceId "Bid 1"
-                                                   (Role "Bidder 1")) [
-                                                (Bound 2000000 1000000000000)])
-                                             (If
-                                                (ValueGT
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (UseValue "Highest Bid"))
-                                                (When [
-                                                   (Case
-                                                      (Deposit
-                                                         (Role "Bidder 1")
-                                                         (Role "Bidder 1")
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1"))))
-                                                      (Let "Highest Bid"
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1")))
-                                                         (Pay
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                           ,
+                           (Case
+                              (Choice
+                                 (ChoiceId "Bid 2"
+                                    (Role "Bidder 2")) [
+                                 (Bound 2000000 1000000000000)])
+                              (If
+                                 (ValueGT
+                                    (ChoiceValue
+                                       (ChoiceId "Bid 2"
+                                          (Role "Bidder 2")))
+                                    (UseValue "Highest Bid"))
+                                 (When [
+                                    (Case
+                                       (Deposit
+                                          (Role "Bidder 2")
+                                          (Role "Bidder 2")
+                                          (Token "" "")
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 2"
+                                                (Role "Bidder 2"))))
+                                       (Let "Highest Bid"
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 2"
+                                                (Role "Bidder 2")))
+                                          (When [
+                                             (Case
+                                                (Choice
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")) [
+                                                   (Bound 2000000 1000000000000)])
+                                                (If
+                                                   (ValueGT
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (UseValue "Highest Bid"))
+                                                   (When [
+                                                      (Case
+                                                         (Deposit
                                                             (Role "Bidder 1")
-                                                            (Party
-                                                               (Role "Seller"))
+                                                            (Role "Bidder 1")
                                                             (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 1"
+                                                                  (Role "Bidder 1"))))
+                                                         (Let "Highest Bid"
                                                             (ChoiceValue
                                                                (ChoiceId "Bid 1"
                                                                   (Role "Bidder 1")))
                                                             (Pay
-                                                               (Role "Seller")
+                                                               (Role "Bidder 1")
                                                                (Party
-                                                                  (Role "Bidder 1"))
-                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                                  (Role "Seller"))
+                                                               (Token "" "")
+                                                               (ChoiceValue
+                                                                  (ChoiceId "Bid 1"
+                                                                     (Role "Bidder 1")))
+                                                               (Pay
+                                                                  (Role "Seller")
+                                                                  (Party
+                                                                     (Role "Bidder 1"))
+                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                      (Pay
+                                                         (Role "Bidder 2")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 2"
+                                                               (Role "Bidder 2")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 2"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close)))
                                                    (Pay
                                                       (Role "Bidder 2")
                                                       (Party
@@ -3648,35 +3478,60 @@
                                                          (Party
                                                             (Role "Bidder 2"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close)))
-                                                (Pay
-                                                   (Role "Bidder 2")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 2"
-                                                         (Role "Bidder 2")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 2"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                          (Pay
-                                             (Role "Bidder 2")
-                                             (Party
-                                                (Role "Seller"))
-                                             (Token "" "")
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 2"
-                                                   (Role "Bidder 2")))
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
                                              (Pay
-                                                (Role "Seller")
+                                                (Role "Bidder 2")
                                                 (Party
-                                                   (Role "Bidder 2"))
-                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                                   (Role "Seller"))
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 2"
+                                                      (Role "Bidder 2")))
+                                                (Pay
+                                                   (Role "Seller")
+                                                   (Party
+                                                      (Role "Bidder 2"))
+                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                    (When [
+                                       (Case
+                                          (Choice
+                                             (ChoiceId "Bid 1"
+                                                (Role "Bidder 1")) [
+                                             (Bound 2000000 1000000000000)])
+                                          (If
+                                             (ValueGT
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")))
+                                                (UseValue "Highest Bid"))
+                                             (When [
+                                                (Case
+                                                   (Deposit
+                                                      (Role "Bidder 1")
+                                                      (Role "Bidder 1")
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1"))))
+                                                   (Let "Highest Bid"
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (Pay
+                                                         (Role "Bidder 1")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 1"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
                                  (When [
                                     (Case
                                        (Choice
@@ -3715,47 +3570,8 @@
                                                          (Party
                                                             (Role "Bidder 1"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                              (When [
-                                 (Case
-                                    (Choice
-                                       (ChoiceId "Bid 1"
-                                          (Role "Bidder 1")) [
-                                       (Bound 2000000 1000000000000)])
-                                    (If
-                                       (ValueGT
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 1"
-                                                (Role "Bidder 1")))
-                                          (UseValue "Highest Bid"))
-                                       (When [
-                                          (Case
-                                             (Deposit
-                                                (Role "Bidder 1")
-                                                (Role "Bidder 1")
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1"))))
-                                             (Let "Highest Bid"
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")))
-                                                (Pay
-                                                   (Role "Bidder 1")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 1"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                        ,
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
+                  (When [
                         (Case
                            (Choice
                               (ChoiceId "Bid 1"
@@ -3937,6 +3753,190 @@
                                                       (Role "Seller")
                                                       (Party
                                                          (Role "Bidder 2"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                        ,
+                        (Case
+                           (Choice
+                              (ChoiceId "Bid 2"
+                                 (Role "Bidder 2")) [
+                              (Bound 2000000 1000000000000)])
+                           (If
+                              (ValueGT
+                                 (ChoiceValue
+                                    (ChoiceId "Bid 2"
+                                       (Role "Bidder 2")))
+                                 (UseValue "Highest Bid"))
+                              (When [
+                                 (Case
+                                    (Deposit
+                                       (Role "Bidder 2")
+                                       (Role "Bidder 2")
+                                       (Token "" "")
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 2"
+                                             (Role "Bidder 2"))))
+                                    (Let "Highest Bid"
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 2"
+                                             (Role "Bidder 2")))
+                                       (When [
+                                          (Case
+                                             (Choice
+                                                (ChoiceId "Bid 1"
+                                                   (Role "Bidder 1")) [
+                                                (Bound 2000000 1000000000000)])
+                                             (If
+                                                (ValueGT
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (UseValue "Highest Bid"))
+                                                (When [
+                                                   (Case
+                                                      (Deposit
+                                                         (Role "Bidder 1")
+                                                         (Role "Bidder 1")
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1"))))
+                                                      (Let "Highest Bid"
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1")))
+                                                         (Pay
+                                                            (Role "Bidder 1")
+                                                            (Party
+                                                               (Role "Seller"))
+                                                            (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 1"
+                                                                  (Role "Bidder 1")))
+                                                            (Pay
+                                                               (Role "Seller")
+                                                               (Party
+                                                                  (Role "Bidder 1"))
+                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                   (Pay
+                                                      (Role "Bidder 2")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 2"
+                                                            (Role "Bidder 2")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 2"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close)))
+                                                (Pay
+                                                   (Role "Bidder 2")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 2"
+                                                         (Role "Bidder 2")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 2"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                          (Pay
+                                             (Role "Bidder 2")
+                                             (Party
+                                                (Role "Seller"))
+                                             (Token "" "")
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 2"
+                                                   (Role "Bidder 2")))
+                                             (Pay
+                                                (Role "Seller")
+                                                (Party
+                                                   (Role "Bidder 2"))
+                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                 (When [
+                                    (Case
+                                       (Choice
+                                          (ChoiceId "Bid 1"
+                                             (Role "Bidder 1")) [
+                                          (Bound 2000000 1000000000000)])
+                                       (If
+                                          (ValueGT
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 1"
+                                                   (Role "Bidder 1")))
+                                             (UseValue "Highest Bid"))
+                                          (When [
+                                             (Case
+                                                (Deposit
+                                                   (Role "Bidder 1")
+                                                   (Role "Bidder 1")
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1"))))
+                                                (Let "Highest Bid"
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (Pay
+                                                      (Role "Bidder 1")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 1"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
+                              (When [
+                                 (Case
+                                    (Choice
+                                       (ChoiceId "Bid 1"
+                                          (Role "Bidder 1")) [
+                                       (Bound 2000000 1000000000000)])
+                                    (If
+                                       (ValueGT
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 1"
+                                                (Role "Bidder 1")))
+                                          (UseValue "Highest Bid"))
+                                       (When [
+                                          (Case
+                                             (Deposit
+                                                (Role "Bidder 1")
+                                                (Role "Bidder 1")
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1"))))
+                                             (Let "Highest Bid"
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")))
+                                                (Pay
+                                                   (Role "Bidder 1")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 1"))
                                                       (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
                                                       (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close)))
             ,
@@ -4517,190 +4517,6 @@
                      (When [
                            (Case
                               (Choice
-                                 (ChoiceId "Bid 3"
-                                    (Role "Bidder 3")) [
-                                 (Bound 2000000 1000000000000)])
-                              (If
-                                 (ValueGT
-                                    (ChoiceValue
-                                       (ChoiceId "Bid 3"
-                                          (Role "Bidder 3")))
-                                    (UseValue "Highest Bid"))
-                                 (When [
-                                    (Case
-                                       (Deposit
-                                          (Role "Bidder 3")
-                                          (Role "Bidder 3")
-                                          (Token "" "")
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 3"
-                                                (Role "Bidder 3"))))
-                                       (Let "Highest Bid"
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 3"
-                                                (Role "Bidder 3")))
-                                          (When [
-                                             (Case
-                                                (Choice
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")) [
-                                                   (Bound 2000000 1000000000000)])
-                                                (If
-                                                   (ValueGT
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (UseValue "Highest Bid"))
-                                                   (When [
-                                                      (Case
-                                                         (Deposit
-                                                            (Role "Bidder 1")
-                                                            (Role "Bidder 1")
-                                                            (Token "" "")
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 1"
-                                                                  (Role "Bidder 1"))))
-                                                         (Let "Highest Bid"
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 1"
-                                                                  (Role "Bidder 1")))
-                                                            (Pay
-                                                               (Role "Bidder 1")
-                                                               (Party
-                                                                  (Role "Seller"))
-                                                               (Token "" "")
-                                                               (ChoiceValue
-                                                                  (ChoiceId "Bid 1"
-                                                                     (Role "Bidder 1")))
-                                                               (Pay
-                                                                  (Role "Seller")
-                                                                  (Party
-                                                                     (Role "Bidder 1"))
-                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                                      (Pay
-                                                         (Role "Bidder 3")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 3"
-                                                               (Role "Bidder 3")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 3"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close)))
-                                                   (Pay
-                                                      (Role "Bidder 3")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 3"
-                                                            (Role "Bidder 3")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 3"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                             (Pay
-                                                (Role "Bidder 3")
-                                                (Party
-                                                   (Role "Seller"))
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 3"
-                                                      (Role "Bidder 3")))
-                                                (Pay
-                                                   (Role "Seller")
-                                                   (Party
-                                                      (Role "Bidder 3"))
-                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
-                                    (When [
-                                       (Case
-                                          (Choice
-                                             (ChoiceId "Bid 1"
-                                                (Role "Bidder 1")) [
-                                             (Bound 2000000 1000000000000)])
-                                          (If
-                                             (ValueGT
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")))
-                                                (UseValue "Highest Bid"))
-                                             (When [
-                                                (Case
-                                                   (Deposit
-                                                      (Role "Bidder 1")
-                                                      (Role "Bidder 1")
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1"))))
-                                                   (Let "Highest Bid"
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (Pay
-                                                         (Role "Bidder 1")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 1"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                                 (When [
-                                    (Case
-                                       (Choice
-                                          (ChoiceId "Bid 1"
-                                             (Role "Bidder 1")) [
-                                          (Bound 2000000 1000000000000)])
-                                       (If
-                                          (ValueGT
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 1"
-                                                   (Role "Bidder 1")))
-                                             (UseValue "Highest Bid"))
-                                          (When [
-                                             (Case
-                                                (Deposit
-                                                   (Role "Bidder 1")
-                                                   (Role "Bidder 1")
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1"))))
-                                                (Let "Highest Bid"
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (Pay
-                                                      (Role "Bidder 1")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 1"
-                                                            (Role "Bidder 1")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 1"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                           ,
-                           (Case
-                              (Choice
                                  (ChoiceId "Bid 1"
                                     (Role "Bidder 1")) [
                                  (Bound 2000000 1000000000000)])
@@ -4881,71 +4697,85 @@
                                                          (Party
                                                             (Role "Bidder 3"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
-                  (When [
-                        (Case
-                           (Choice
-                              (ChoiceId "Bid 3"
-                                 (Role "Bidder 3")) [
-                              (Bound 2000000 1000000000000)])
-                           (If
-                              (ValueGT
-                                 (ChoiceValue
-                                    (ChoiceId "Bid 3"
-                                       (Role "Bidder 3")))
-                                 (UseValue "Highest Bid"))
-                              (When [
-                                 (Case
-                                    (Deposit
-                                       (Role "Bidder 3")
-                                       (Role "Bidder 3")
-                                       (Token "" "")
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 3"
-                                             (Role "Bidder 3"))))
-                                    (Let "Highest Bid"
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 3"
-                                             (Role "Bidder 3")))
-                                       (When [
-                                          (Case
-                                             (Choice
-                                                (ChoiceId "Bid 1"
-                                                   (Role "Bidder 1")) [
-                                                (Bound 2000000 1000000000000)])
-                                             (If
-                                                (ValueGT
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (UseValue "Highest Bid"))
-                                                (When [
-                                                   (Case
-                                                      (Deposit
-                                                         (Role "Bidder 1")
-                                                         (Role "Bidder 1")
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1"))))
-                                                      (Let "Highest Bid"
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 1"
-                                                               (Role "Bidder 1")))
-                                                         (Pay
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                           ,
+                           (Case
+                              (Choice
+                                 (ChoiceId "Bid 3"
+                                    (Role "Bidder 3")) [
+                                 (Bound 2000000 1000000000000)])
+                              (If
+                                 (ValueGT
+                                    (ChoiceValue
+                                       (ChoiceId "Bid 3"
+                                          (Role "Bidder 3")))
+                                    (UseValue "Highest Bid"))
+                                 (When [
+                                    (Case
+                                       (Deposit
+                                          (Role "Bidder 3")
+                                          (Role "Bidder 3")
+                                          (Token "" "")
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 3"
+                                                (Role "Bidder 3"))))
+                                       (Let "Highest Bid"
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 3"
+                                                (Role "Bidder 3")))
+                                          (When [
+                                             (Case
+                                                (Choice
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")) [
+                                                   (Bound 2000000 1000000000000)])
+                                                (If
+                                                   (ValueGT
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (UseValue "Highest Bid"))
+                                                   (When [
+                                                      (Case
+                                                         (Deposit
                                                             (Role "Bidder 1")
-                                                            (Party
-                                                               (Role "Seller"))
+                                                            (Role "Bidder 1")
                                                             (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 1"
+                                                                  (Role "Bidder 1"))))
+                                                         (Let "Highest Bid"
                                                             (ChoiceValue
                                                                (ChoiceId "Bid 1"
                                                                   (Role "Bidder 1")))
                                                             (Pay
-                                                               (Role "Seller")
+                                                               (Role "Bidder 1")
                                                                (Party
-                                                                  (Role "Bidder 1"))
-                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                                  (Role "Seller"))
+                                                               (Token "" "")
+                                                               (ChoiceValue
+                                                                  (ChoiceId "Bid 1"
+                                                                     (Role "Bidder 1")))
+                                                               (Pay
+                                                                  (Role "Seller")
+                                                                  (Party
+                                                                     (Role "Bidder 1"))
+                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                      (Pay
+                                                         (Role "Bidder 3")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 3"
+                                                               (Role "Bidder 3")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 3"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close)))
                                                    (Pay
                                                       (Role "Bidder 3")
                                                       (Party
@@ -4959,35 +4789,60 @@
                                                          (Party
                                                             (Role "Bidder 3"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close)))
-                                                (Pay
-                                                   (Role "Bidder 3")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 3"
-                                                         (Role "Bidder 3")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 3"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                          (Pay
-                                             (Role "Bidder 3")
-                                             (Party
-                                                (Role "Seller"))
-                                             (Token "" "")
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 3"
-                                                   (Role "Bidder 3")))
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
                                              (Pay
-                                                (Role "Seller")
+                                                (Role "Bidder 3")
                                                 (Party
-                                                   (Role "Bidder 3"))
-                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                                   (Role "Seller"))
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 3"
+                                                      (Role "Bidder 3")))
+                                                (Pay
+                                                   (Role "Seller")
+                                                   (Party
+                                                      (Role "Bidder 3"))
+                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                    (When [
+                                       (Case
+                                          (Choice
+                                             (ChoiceId "Bid 1"
+                                                (Role "Bidder 1")) [
+                                             (Bound 2000000 1000000000000)])
+                                          (If
+                                             (ValueGT
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")))
+                                                (UseValue "Highest Bid"))
+                                             (When [
+                                                (Case
+                                                   (Deposit
+                                                      (Role "Bidder 1")
+                                                      (Role "Bidder 1")
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1"))))
+                                                   (Let "Highest Bid"
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (Pay
+                                                         (Role "Bidder 1")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 1"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
                                  (When [
                                     (Case
                                        (Choice
@@ -5026,47 +4881,8 @@
                                                          (Party
                                                             (Role "Bidder 1"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                              (When [
-                                 (Case
-                                    (Choice
-                                       (ChoiceId "Bid 1"
-                                          (Role "Bidder 1")) [
-                                       (Bound 2000000 1000000000000)])
-                                    (If
-                                       (ValueGT
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 1"
-                                                (Role "Bidder 1")))
-                                          (UseValue "Highest Bid"))
-                                       (When [
-                                          (Case
-                                             (Deposit
-                                                (Role "Bidder 1")
-                                                (Role "Bidder 1")
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1"))))
-                                             (Let "Highest Bid"
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 1"
-                                                      (Role "Bidder 1")))
-                                                (Pay
-                                                   (Role "Bidder 1")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 1"
-                                                         (Role "Bidder 1")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 1"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                        ,
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
+                  (When [
                         (Case
                            (Choice
                               (ChoiceId "Bid 1"
@@ -5248,6 +5064,190 @@
                                                       (Role "Seller")
                                                       (Party
                                                          (Role "Bidder 3"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                        ,
+                        (Case
+                           (Choice
+                              (ChoiceId "Bid 3"
+                                 (Role "Bidder 3")) [
+                              (Bound 2000000 1000000000000)])
+                           (If
+                              (ValueGT
+                                 (ChoiceValue
+                                    (ChoiceId "Bid 3"
+                                       (Role "Bidder 3")))
+                                 (UseValue "Highest Bid"))
+                              (When [
+                                 (Case
+                                    (Deposit
+                                       (Role "Bidder 3")
+                                       (Role "Bidder 3")
+                                       (Token "" "")
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 3"
+                                             (Role "Bidder 3"))))
+                                    (Let "Highest Bid"
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 3"
+                                             (Role "Bidder 3")))
+                                       (When [
+                                          (Case
+                                             (Choice
+                                                (ChoiceId "Bid 1"
+                                                   (Role "Bidder 1")) [
+                                                (Bound 2000000 1000000000000)])
+                                             (If
+                                                (ValueGT
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (UseValue "Highest Bid"))
+                                                (When [
+                                                   (Case
+                                                      (Deposit
+                                                         (Role "Bidder 1")
+                                                         (Role "Bidder 1")
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1"))))
+                                                      (Let "Highest Bid"
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 1"
+                                                               (Role "Bidder 1")))
+                                                         (Pay
+                                                            (Role "Bidder 1")
+                                                            (Party
+                                                               (Role "Seller"))
+                                                            (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 1"
+                                                                  (Role "Bidder 1")))
+                                                            (Pay
+                                                               (Role "Seller")
+                                                               (Party
+                                                                  (Role "Bidder 1"))
+                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                   (Pay
+                                                      (Role "Bidder 3")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 3"
+                                                            (Role "Bidder 3")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 3"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close)))
+                                                (Pay
+                                                   (Role "Bidder 3")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 3"
+                                                         (Role "Bidder 3")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 3"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                          (Pay
+                                             (Role "Bidder 3")
+                                             (Party
+                                                (Role "Seller"))
+                                             (Token "" "")
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 3"
+                                                   (Role "Bidder 3")))
+                                             (Pay
+                                                (Role "Seller")
+                                                (Party
+                                                   (Role "Bidder 3"))
+                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                 (When [
+                                    (Case
+                                       (Choice
+                                          (ChoiceId "Bid 1"
+                                             (Role "Bidder 1")) [
+                                          (Bound 2000000 1000000000000)])
+                                       (If
+                                          (ValueGT
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 1"
+                                                   (Role "Bidder 1")))
+                                             (UseValue "Highest Bid"))
+                                          (When [
+                                             (Case
+                                                (Deposit
+                                                   (Role "Bidder 1")
+                                                   (Role "Bidder 1")
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1"))))
+                                                (Let "Highest Bid"
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (Pay
+                                                      (Role "Bidder 1")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 1"
+                                                            (Role "Bidder 1")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 1"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
+                              (When [
+                                 (Case
+                                    (Choice
+                                       (ChoiceId "Bid 1"
+                                          (Role "Bidder 1")) [
+                                       (Bound 2000000 1000000000000)])
+                                    (If
+                                       (ValueGT
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 1"
+                                                (Role "Bidder 1")))
+                                          (UseValue "Highest Bid"))
+                                       (When [
+                                          (Case
+                                             (Deposit
+                                                (Role "Bidder 1")
+                                                (Role "Bidder 1")
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1"))))
+                                             (Let "Highest Bid"
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 1"
+                                                      (Role "Bidder 1")))
+                                                (Pay
+                                                   (Role "Bidder 1")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 1"
+                                                         (Role "Bidder 1")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 1"))
                                                       (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
                                                       (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close)))
             ,
@@ -7139,190 +7139,6 @@
                      (When [
                            (Case
                               (Choice
-                                 (ChoiceId "Bid 3"
-                                    (Role "Bidder 3")) [
-                                 (Bound 2000000 1000000000000)])
-                              (If
-                                 (ValueGT
-                                    (ChoiceValue
-                                       (ChoiceId "Bid 3"
-                                          (Role "Bidder 3")))
-                                    (UseValue "Highest Bid"))
-                                 (When [
-                                    (Case
-                                       (Deposit
-                                          (Role "Bidder 3")
-                                          (Role "Bidder 3")
-                                          (Token "" "")
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 3"
-                                                (Role "Bidder 3"))))
-                                       (Let "Highest Bid"
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 3"
-                                                (Role "Bidder 3")))
-                                          (When [
-                                             (Case
-                                                (Choice
-                                                   (ChoiceId "Bid 2"
-                                                      (Role "Bidder 2")) [
-                                                   (Bound 2000000 1000000000000)])
-                                                (If
-                                                   (ValueGT
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 2"
-                                                            (Role "Bidder 2")))
-                                                      (UseValue "Highest Bid"))
-                                                   (When [
-                                                      (Case
-                                                         (Deposit
-                                                            (Role "Bidder 2")
-                                                            (Role "Bidder 2")
-                                                            (Token "" "")
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 2"
-                                                                  (Role "Bidder 2"))))
-                                                         (Let "Highest Bid"
-                                                            (ChoiceValue
-                                                               (ChoiceId "Bid 2"
-                                                                  (Role "Bidder 2")))
-                                                            (Pay
-                                                               (Role "Bidder 2")
-                                                               (Party
-                                                                  (Role "Seller"))
-                                                               (Token "" "")
-                                                               (ChoiceValue
-                                                                  (ChoiceId "Bid 2"
-                                                                     (Role "Bidder 2")))
-                                                               (Pay
-                                                                  (Role "Seller")
-                                                                  (Party
-                                                                     (Role "Bidder 2"))
-                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                                      (Pay
-                                                         (Role "Bidder 3")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 3"
-                                                               (Role "Bidder 3")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 3"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close)))
-                                                   (Pay
-                                                      (Role "Bidder 3")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 3"
-                                                            (Role "Bidder 3")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 3"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                             (Pay
-                                                (Role "Bidder 3")
-                                                (Party
-                                                   (Role "Seller"))
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 3"
-                                                      (Role "Bidder 3")))
-                                                (Pay
-                                                   (Role "Seller")
-                                                   (Party
-                                                      (Role "Bidder 3"))
-                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
-                                    (When [
-                                       (Case
-                                          (Choice
-                                             (ChoiceId "Bid 2"
-                                                (Role "Bidder 2")) [
-                                             (Bound 2000000 1000000000000)])
-                                          (If
-                                             (ValueGT
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 2"
-                                                      (Role "Bidder 2")))
-                                                (UseValue "Highest Bid"))
-                                             (When [
-                                                (Case
-                                                   (Deposit
-                                                      (Role "Bidder 2")
-                                                      (Role "Bidder 2")
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 2"
-                                                            (Role "Bidder 2"))))
-                                                   (Let "Highest Bid"
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 2"
-                                                            (Role "Bidder 2")))
-                                                      (Pay
-                                                         (Role "Bidder 2")
-                                                         (Party
-                                                            (Role "Seller"))
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 2"
-                                                               (Role "Bidder 2")))
-                                                         (Pay
-                                                            (Role "Seller")
-                                                            (Party
-                                                               (Role "Bidder 2"))
-                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                                 (When [
-                                    (Case
-                                       (Choice
-                                          (ChoiceId "Bid 2"
-                                             (Role "Bidder 2")) [
-                                          (Bound 2000000 1000000000000)])
-                                       (If
-                                          (ValueGT
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 2"
-                                                   (Role "Bidder 2")))
-                                             (UseValue "Highest Bid"))
-                                          (When [
-                                             (Case
-                                                (Deposit
-                                                   (Role "Bidder 2")
-                                                   (Role "Bidder 2")
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 2"
-                                                         (Role "Bidder 2"))))
-                                                (Let "Highest Bid"
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 2"
-                                                         (Role "Bidder 2")))
-                                                   (Pay
-                                                      (Role "Bidder 2")
-                                                      (Party
-                                                         (Role "Seller"))
-                                                      (Token "" "")
-                                                      (ChoiceValue
-                                                         (ChoiceId "Bid 2"
-                                                            (Role "Bidder 2")))
-                                                      (Pay
-                                                         (Role "Seller")
-                                                         (Party
-                                                            (Role "Bidder 2"))
-                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                           ,
-                           (Case
-                              (Choice
                                  (ChoiceId "Bid 2"
                                     (Role "Bidder 2")) [
                                  (Bound 2000000 1000000000000)])
@@ -7503,71 +7319,85 @@
                                                          (Party
                                                             (Role "Bidder 3"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
-                  (When [
-                        (Case
-                           (Choice
-                              (ChoiceId "Bid 3"
-                                 (Role "Bidder 3")) [
-                              (Bound 2000000 1000000000000)])
-                           (If
-                              (ValueGT
-                                 (ChoiceValue
-                                    (ChoiceId "Bid 3"
-                                       (Role "Bidder 3")))
-                                 (UseValue "Highest Bid"))
-                              (When [
-                                 (Case
-                                    (Deposit
-                                       (Role "Bidder 3")
-                                       (Role "Bidder 3")
-                                       (Token "" "")
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 3"
-                                             (Role "Bidder 3"))))
-                                    (Let "Highest Bid"
-                                       (ChoiceValue
-                                          (ChoiceId "Bid 3"
-                                             (Role "Bidder 3")))
-                                       (When [
-                                          (Case
-                                             (Choice
-                                                (ChoiceId "Bid 2"
-                                                   (Role "Bidder 2")) [
-                                                (Bound 2000000 1000000000000)])
-                                             (If
-                                                (ValueGT
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 2"
-                                                         (Role "Bidder 2")))
-                                                   (UseValue "Highest Bid"))
-                                                (When [
-                                                   (Case
-                                                      (Deposit
-                                                         (Role "Bidder 2")
-                                                         (Role "Bidder 2")
-                                                         (Token "" "")
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 2"
-                                                               (Role "Bidder 2"))))
-                                                      (Let "Highest Bid"
-                                                         (ChoiceValue
-                                                            (ChoiceId "Bid 2"
-                                                               (Role "Bidder 2")))
-                                                         (Pay
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                           ,
+                           (Case
+                              (Choice
+                                 (ChoiceId "Bid 3"
+                                    (Role "Bidder 3")) [
+                                 (Bound 2000000 1000000000000)])
+                              (If
+                                 (ValueGT
+                                    (ChoiceValue
+                                       (ChoiceId "Bid 3"
+                                          (Role "Bidder 3")))
+                                    (UseValue "Highest Bid"))
+                                 (When [
+                                    (Case
+                                       (Deposit
+                                          (Role "Bidder 3")
+                                          (Role "Bidder 3")
+                                          (Token "" "")
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 3"
+                                                (Role "Bidder 3"))))
+                                       (Let "Highest Bid"
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 3"
+                                                (Role "Bidder 3")))
+                                          (When [
+                                             (Case
+                                                (Choice
+                                                   (ChoiceId "Bid 2"
+                                                      (Role "Bidder 2")) [
+                                                   (Bound 2000000 1000000000000)])
+                                                (If
+                                                   (ValueGT
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 2"
+                                                            (Role "Bidder 2")))
+                                                      (UseValue "Highest Bid"))
+                                                   (When [
+                                                      (Case
+                                                         (Deposit
                                                             (Role "Bidder 2")
-                                                            (Party
-                                                               (Role "Seller"))
+                                                            (Role "Bidder 2")
                                                             (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 2"
+                                                                  (Role "Bidder 2"))))
+                                                         (Let "Highest Bid"
                                                             (ChoiceValue
                                                                (ChoiceId "Bid 2"
                                                                   (Role "Bidder 2")))
                                                             (Pay
-                                                               (Role "Seller")
+                                                               (Role "Bidder 2")
                                                                (Party
-                                                                  (Role "Bidder 2"))
-                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                                  (Role "Seller"))
+                                                               (Token "" "")
+                                                               (ChoiceValue
+                                                                  (ChoiceId "Bid 2"
+                                                                     (Role "Bidder 2")))
+                                                               (Pay
+                                                                  (Role "Seller")
+                                                                  (Party
+                                                                     (Role "Bidder 2"))
+                                                                  (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                                  (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                      (Pay
+                                                         (Role "Bidder 3")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 3"
+                                                               (Role "Bidder 3")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 3"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close)))
                                                    (Pay
                                                       (Role "Bidder 3")
                                                       (Party
@@ -7581,35 +7411,60 @@
                                                          (Party
                                                             (Role "Bidder 3"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close)))
-                                                (Pay
-                                                   (Role "Bidder 3")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 3"
-                                                         (Role "Bidder 3")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 3"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
-                                          (Pay
-                                             (Role "Bidder 3")
-                                             (Party
-                                                (Role "Seller"))
-                                             (Token "" "")
-                                             (ChoiceValue
-                                                (ChoiceId "Bid 3"
-                                                   (Role "Bidder 3")))
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
                                              (Pay
-                                                (Role "Seller")
+                                                (Role "Bidder 3")
                                                 (Party
-                                                   (Role "Bidder 3"))
-                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                                   (Role "Seller"))
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 3"
+                                                      (Role "Bidder 3")))
+                                                (Pay
+                                                   (Role "Seller")
+                                                   (Party
+                                                      (Role "Bidder 3"))
+                                                   (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                   (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                    (When [
+                                       (Case
+                                          (Choice
+                                             (ChoiceId "Bid 2"
+                                                (Role "Bidder 2")) [
+                                             (Bound 2000000 1000000000000)])
+                                          (If
+                                             (ValueGT
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 2"
+                                                      (Role "Bidder 2")))
+                                                (UseValue "Highest Bid"))
+                                             (When [
+                                                (Case
+                                                   (Deposit
+                                                      (Role "Bidder 2")
+                                                      (Role "Bidder 2")
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 2"
+                                                            (Role "Bidder 2"))))
+                                                   (Let "Highest Bid"
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 2"
+                                                            (Role "Bidder 2")))
+                                                      (Pay
+                                                         (Role "Bidder 2")
+                                                         (Party
+                                                            (Role "Seller"))
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 2"
+                                                               (Role "Bidder 2")))
+                                                         (Pay
+                                                            (Role "Seller")
+                                                            (Party
+                                                               (Role "Bidder 2"))
+                                                            (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                            (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
                                  (When [
                                     (Case
                                        (Choice
@@ -7648,47 +7503,8 @@
                                                          (Party
                                                             (Role "Bidder 2"))
                                                          (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
-                              (When [
-                                 (Case
-                                    (Choice
-                                       (ChoiceId "Bid 2"
-                                          (Role "Bidder 2")) [
-                                       (Bound 2000000 1000000000000)])
-                                    (If
-                                       (ValueGT
-                                          (ChoiceValue
-                                             (ChoiceId "Bid 2"
-                                                (Role "Bidder 2")))
-                                          (UseValue "Highest Bid"))
-                                       (When [
-                                          (Case
-                                             (Deposit
-                                                (Role "Bidder 2")
-                                                (Role "Bidder 2")
-                                                (Token "" "")
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 2"
-                                                      (Role "Bidder 2"))))
-                                             (Let "Highest Bid"
-                                                (ChoiceValue
-                                                   (ChoiceId "Bid 2"
-                                                      (Role "Bidder 2")))
-                                                (Pay
-                                                   (Role "Bidder 2")
-                                                   (Party
-                                                      (Role "Seller"))
-                                                   (Token "" "")
-                                                   (ChoiceValue
-                                                      (ChoiceId "Bid 2"
-                                                         (Role "Bidder 2")))
-                                                   (Pay
-                                                      (Role "Seller")
-                                                      (Party
-                                                         (Role "Bidder 2"))
-                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
-                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
-                        ,
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close))
+                  (When [
                         (Case
                            (Choice
                               (ChoiceId "Bid 2"
@@ -7870,5 +7686,189 @@
                                                       (Role "Seller")
                                                       (Party
                                                          (Role "Bidder 3"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))
+                        ,
+                        (Case
+                           (Choice
+                              (ChoiceId "Bid 3"
+                                 (Role "Bidder 3")) [
+                              (Bound 2000000 1000000000000)])
+                           (If
+                              (ValueGT
+                                 (ChoiceValue
+                                    (ChoiceId "Bid 3"
+                                       (Role "Bidder 3")))
+                                 (UseValue "Highest Bid"))
+                              (When [
+                                 (Case
+                                    (Deposit
+                                       (Role "Bidder 3")
+                                       (Role "Bidder 3")
+                                       (Token "" "")
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 3"
+                                             (Role "Bidder 3"))))
+                                    (Let "Highest Bid"
+                                       (ChoiceValue
+                                          (ChoiceId "Bid 3"
+                                             (Role "Bidder 3")))
+                                       (When [
+                                          (Case
+                                             (Choice
+                                                (ChoiceId "Bid 2"
+                                                   (Role "Bidder 2")) [
+                                                (Bound 2000000 1000000000000)])
+                                             (If
+                                                (ValueGT
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 2"
+                                                         (Role "Bidder 2")))
+                                                   (UseValue "Highest Bid"))
+                                                (When [
+                                                   (Case
+                                                      (Deposit
+                                                         (Role "Bidder 2")
+                                                         (Role "Bidder 2")
+                                                         (Token "" "")
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 2"
+                                                               (Role "Bidder 2"))))
+                                                      (Let "Highest Bid"
+                                                         (ChoiceValue
+                                                            (ChoiceId "Bid 2"
+                                                               (Role "Bidder 2")))
+                                                         (Pay
+                                                            (Role "Bidder 2")
+                                                            (Party
+                                                               (Role "Seller"))
+                                                            (Token "" "")
+                                                            (ChoiceValue
+                                                               (ChoiceId "Bid 2"
+                                                                  (Role "Bidder 2")))
+                                                            (Pay
+                                                               (Role "Seller")
+                                                               (Party
+                                                                  (Role "Bidder 2"))
+                                                               (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                               (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                                   (Pay
+                                                      (Role "Bidder 3")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 3"
+                                                            (Role "Bidder 3")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 3"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close)))
+                                                (Pay
+                                                   (Role "Bidder 3")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 3"
+                                                         (Role "Bidder 3")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 3"))
+                                                      (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                      (Constant 1) Close))))] (TimeParam "Bid Deadline 3")
+                                          (Pay
+                                             (Role "Bidder 3")
+                                             (Party
+                                                (Role "Seller"))
+                                             (Token "" "")
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 3"
+                                                   (Role "Bidder 3")))
+                                             (Pay
+                                                (Role "Seller")
+                                                (Party
+                                                   (Role "Bidder 3"))
+                                                (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                (Constant 1) Close)))))] (TimeParam "Bid Deadline 2")
+                                 (When [
+                                    (Case
+                                       (Choice
+                                          (ChoiceId "Bid 2"
+                                             (Role "Bidder 2")) [
+                                          (Bound 2000000 1000000000000)])
+                                       (If
+                                          (ValueGT
+                                             (ChoiceValue
+                                                (ChoiceId "Bid 2"
+                                                   (Role "Bidder 2")))
+                                             (UseValue "Highest Bid"))
+                                          (When [
+                                             (Case
+                                                (Deposit
+                                                   (Role "Bidder 2")
+                                                   (Role "Bidder 2")
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 2"
+                                                         (Role "Bidder 2"))))
+                                                (Let "Highest Bid"
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 2"
+                                                         (Role "Bidder 2")))
+                                                   (Pay
+                                                      (Role "Bidder 2")
+                                                      (Party
+                                                         (Role "Seller"))
+                                                      (Token "" "")
+                                                      (ChoiceValue
+                                                         (ChoiceId "Bid 2"
+                                                            (Role "Bidder 2")))
+                                                      (Pay
+                                                         (Role "Seller")
+                                                         (Party
+                                                            (Role "Bidder 2"))
+                                                         (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
+                                                         (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close))
+                              (When [
+                                 (Case
+                                    (Choice
+                                       (ChoiceId "Bid 2"
+                                          (Role "Bidder 2")) [
+                                       (Bound 2000000 1000000000000)])
+                                    (If
+                                       (ValueGT
+                                          (ChoiceValue
+                                             (ChoiceId "Bid 2"
+                                                (Role "Bidder 2")))
+                                          (UseValue "Highest Bid"))
+                                       (When [
+                                          (Case
+                                             (Deposit
+                                                (Role "Bidder 2")
+                                                (Role "Bidder 2")
+                                                (Token "" "")
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 2"
+                                                      (Role "Bidder 2"))))
+                                             (Let "Highest Bid"
+                                                (ChoiceValue
+                                                   (ChoiceId "Bid 2"
+                                                      (Role "Bidder 2")))
+                                                (Pay
+                                                   (Role "Bidder 2")
+                                                   (Party
+                                                      (Role "Seller"))
+                                                   (Token "" "")
+                                                   (ChoiceValue
+                                                      (ChoiceId "Bid 2"
+                                                         (Role "Bidder 2")))
+                                                   (Pay
+                                                      (Role "Seller")
+                                                      (Party
+                                                         (Role "Bidder 2"))
                                                       (Token "1ada2ada3ada4ada5ada6ada7ada8ada9ada10ada11ada12ada13ada" "The Asset")
                                                       (Constant 1) Close))))] (TimeParam "Bid Deadline 3") Close) Close))] (TimeParam "Bid Deadline 3") Close)))] (TimeParam "Bid Deadline 2") Close)))] (TimeParam "Bid Deadline 1") Close))] (TimeParam "Deadline to Deposit Asset") Close)

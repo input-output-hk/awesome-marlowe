@@ -43,7 +43,7 @@ A very difficult variant of this in Marlowe is the Vickrey second-price *sealed-
 
 Reverse auctions are where the roles of buyer and seller are reversed. Multiple sellers compete to obtain the buyer's business and prices typically decrease over time as new offers are made.
 
-Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseAuction.marlowe), [extended JSON](solutions/extended-json/ReverseAuction.json).
+Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseAuction.marlowe), [extended JSON](solutions/extended-json/ReverseAuction.json), [TypeScript](solutions/typescript/ReverseAuction.ts).
 
 
 ### 6. Bidding fee auction (difficult)
@@ -57,4 +57,4 @@ Solution: [Haskell](app/BiddingFee.hs), [Marlowe](solutions/marlowe/BiddingFee.m
 
 The Marlowe analog of a stable coin is a contract that pays the party the value in a base currency (say, USD) of the ADA that they initially deposit in a contract. A counterparty deposits collateral, according to a specified *reserve ratio* (i.e., the ratio of the total ADA in the contract to the ADA deposited by the party), to cover price changes in ADA. When the party withdraws their funds, they receive the ADA corresponding to the base-currency value initially deposited, and the counterparty receives the remaining ADA.
 
-Solution: [Haskell](app/StableCoin.hs), [Marlowe](solutions/marlowe/StableCoin.marlowe), [extended JSON](solutions/extended-json/StableCoin.json).
+Solution: [Haskell](app/StableCoin.hs), [Marlowe](solutions/marlowe/StableCoin.marlowe), [extended JSON](solutions/extended-json/StableCoin.json), [TypeScript](solutions/typescript/StableCoin.ts).

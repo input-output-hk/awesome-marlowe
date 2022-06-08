@@ -48,6 +48,7 @@ example :: Contract
 example = makeContract
 
 
+-- | Make the contract.
 makeContract :: Contract
 makeContract =
   let

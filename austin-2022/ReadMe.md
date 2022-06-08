@@ -34,7 +34,7 @@ A very difficult variant of this in Marlowe is the first-price *sealed-bid* auct
 
 Second-price open-bid auctions are when a single bid is made by all bidding parties and the single highest bidder wins, and pays what the second-highest bidder bid. This contract is not realistic because it can easily be gamed through collusion.
 
-Solution: [Haskell](app/SecondPriceBid.hs), [Marlowe](solutions/marlowe/SecondPriceBid.marlowe), [core JSON](solutions/core-json/SecondPriceBid.json), [extended JSON](solutions/extended-json/SecondPriceBid.json).
+Solution: [Haskell](app/SecondPriceBid.hs), [Marlowe](solutions/marlowe/SecondPriceBid.marlowe), [core JSON](solutions/core-json/SecondPriceBid.json), [extended JSON](solutions/extended-json/SecondPriceBid.json), [TypeScript](solutions/typescript/SecondPrice.ts).
 
 A very difficult variant of this in Marlowe is the Vickrey second-price *sealed-bid* auction, where participants commit their bids before any of them reveal their bids.
 

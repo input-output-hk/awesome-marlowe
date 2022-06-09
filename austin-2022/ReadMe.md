@@ -50,7 +50,7 @@ Solution: [Haskell](app/ReverseAuction.hs), [Marlowe](solutions/marlowe/ReverseA
 
 A bidding fee auction (also known as a penny auction) requires customers to pay the auction owner for bids, which they can increment an auction price one unit of currency at a time.  On English auctions for example, the price goes up in 1 pence (0.01 GBP) increments.
 
-Solution: [Haskell](app/BiddingFee.hs), [Marlowe](solutions/marlowe/BiddingFee.marlowe), [core JSON](solutions/core-json/BiddingFee.json), [extended JSON](solutions/extended-json/BiddingFee.json).
+Solution: [Haskell](app/BiddingFee.hs), [Marlowe](solutions/marlowe/BiddingFee.marlowe), [core JSON](solutions/core-json/BiddingFee.json), [extended JSON](solutions/extended-json/BiddingFee.json), [TypeScript](solutions/typescript/BiddingFee.ts).
 
 
 ### 7. Stable coin (easy)

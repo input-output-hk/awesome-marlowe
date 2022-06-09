@@ -49,7 +49,6 @@ main :: IO ()
 main = printJSON example
 
 
-
 -- | Create an example contract.
 example :: Contract
 example =

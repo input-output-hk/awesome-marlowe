@@ -8,29 +8,32 @@
 
 ## Contents
 
-- [Documentation](#documentation)
+- [Resources](#resources)
 - [Tools](#tools)
 - [Examples](#examples)
 - [Videos](#videos)
 
-### Documentation
+### Resources
 
 - [Official Docs](https://docs.marlowe.iohk.io/docs/introduction) - The official Marlowe documentation.
 - [Official Tutorials](https://docs.marlowe.iohk.io/tutorials) - A collection of tutorials to help you get started with Marlowe.
+- [IOG Tech Support](https://iohk.zendesk.com/hc/en-us/requests/new) - If you have any questions, please contact IOG Tech Support.
+- [Blog](https://marlowe.iohk.io/blog) - The official Marlowe blog.
 
 ### Tools
 
+- [Marlowe Scan](https://marlowescan.com/) - MarloweScan is a tool for visualizing Marlowe contracts on the Cardano blockchain.
 - [Marlowe Playground](https://play.marlowe.iohk.io/) - A browser-based IDE for writing and testing Marlowe contracts.
 - [Marlowe Runtime](https://docs.marlowe.iohk.io/docs/developer-tools/runtime/marlowe-runtime) - The application backend for managing Marlowe contracts on the Cardano blockchain
 - [Marlowe CLI](https://docs.marlowe.iohk.io/docs/developer-tools/marlowe-cli) - A command-line tool that provides access to Marlowe capabilities.
-- [Marlowe Runner](https://github.com/input-output-hk/marlowe-runner) - A simple web app which allows you to deploy and progress through Marlowe contracts on Cardano easily from the browser. [Preprod](https://preprod.runner.marlowe.iohk.io/) / [Preview](https://preview.runner.marlowe.iohk.io/)
+- [Marlowe Runner](https://github.com/input-output-hk/marlowe-runner) - A simple web app which allows you to deploy and progress through Marlowe contracts on Cardano easily from the browser. [[Preprod](https://preprod.runner.marlowe.iohk.io/) / [Preview](https://preview.runner.marlowe.iohk.io/)]
 - [Marlowe TypeScript SDK](https://github.com/input-output-hk/marlowe-ts-sdk) - A suite of TypeScript/JavaScript libraries for developing Web-Dapp in the Cardano Blockchain using Marlowe Technologies.
 
 ### Examples
 
-- [Marlowe Payouts](https://github.com/input-output-hk/marlowe-payouts) - A dApp to help users discover payouts available for withdrawal from Marlowe contracts
-- [Token Plan Prototype](https://github.com/input-output-hk/marlowe-token-plans) - A Vesting contract
-- [Real-World Marlowe](https://github.com/input-output-hk/real-world-marlowe/blob/main/ReadMe.md) - Gallery of Marlowe contracts on `mainnet` and public testnets
+- [Real-World Marlowe](https://github.com/input-output-hk/real-world-marlowe) - Gallery of Marlowe contracts on `mainnet` and public testnets.
+- [Marlowe Payouts](https://github.com/input-output-hk/marlowe-payouts) - A dApp to help users discover payouts available for withdrawal from Marlowe contracts. [[Demo](https://payouts-preprod.prod.scdev.aws.iohkdev.io/)]
+- [Token Plan Prototype](https://github.com/input-output-hk/marlowe-token-plans) - A Vesting contract. [[Demo](https://token-plans-preprod.prod.scdev.aws.iohkdev.io/)]
 
 ### Videos
 

@@ -30,6 +30,7 @@
 
 - [Marlowe Payouts](https://github.com/input-output-hk/marlowe-payouts) - A dApp to help users discover payouts available for withdrawal from Marlowe contracts
 - [Token Plan Prototype](https://github.com/input-output-hk/marlowe-token-plans) - A Vesting contract
+- [Real-World Marlowe](https://github.com/input-output-hk/real-world-marlowe/blob/main/ReadMe.md) - Gallery of Marlowe contracts on `mainnet` and public testnets
 
 ### Videos
 

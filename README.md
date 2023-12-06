@@ -6,12 +6,13 @@
   </p>
 </div>
 
-## Contents
-
 - [Resources](#resources)
 - [Tools](#tools)
-- [Examples](#examples)
+- [DApp and smart contract examples](#dapp-and-smart-contract-examples)
 - [Videos](#videos)
+- [Contributing](#contributing)
+
+---
 
 ### Resources
 
@@ -29,7 +30,7 @@
 - [Marlowe Runner](https://github.com/input-output-hk/marlowe-runner) - A simple web app which allows you to deploy and progress through Marlowe contracts on Cardano easily from the browser. [[Preprod](https://preprod.runner.marlowe.iohk.io/) / [Preview](https://preview.runner.marlowe.iohk.io/)]
 - [Marlowe TypeScript SDK](https://github.com/input-output-hk/marlowe-ts-sdk) - A suite of TypeScript/JavaScript libraries for developing Web-Dapp in the Cardano Blockchain using Marlowe Technologies.
 
-### Examples
+### DApp and smart contract examples
 
 - [Real-World Marlowe](https://github.com/input-output-hk/real-world-marlowe) - Gallery of Marlowe contracts on `mainnet` and public testnets.
 - [Marlowe Payouts](https://github.com/input-output-hk/marlowe-payouts) - A dApp to help users discover payouts available for withdrawal from Marlowe contracts. [[Demo](https://payouts-preprod.prod.scdev.aws.iohkdev.io/)]
@@ -38,5 +39,9 @@
 ### Videos
 
 - [Marlowe Runner Demo](https://www.youtube.com/watch?v=B5XcH0j7Y7w&ab_channel=InputOutput) - In this video, Nick Stanford, Developer Relations Manager for Smart Contracts, will show you how to deploy and execute contracts created in Marlowe Playground, using Marlowe Runner, beta version. Marlowe Runner is a developer tool with a friendly user interface for deploying and executing smart contract on Cardano, straight from a browser.
+
+## Contributing
+
+Anything to contribute? [Make a pull request](https://github.com/input-output-hk/awesome-marlowe/pulls) and add to this list :heart:!
 
 <div align="center"><a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a></div>

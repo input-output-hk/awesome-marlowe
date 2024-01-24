@@ -32,9 +32,10 @@
 
 ### DApp and smart contract examples
 
-- [Real-World Marlowe](https://github.com/input-output-hk/real-world-marlowe) - Gallery of Marlowe contracts on `mainnet` and public testnets.
+- [Real-World Marlowe](contracts/real-world-marlowe) - Gallery of Marlowe contracts on `mainnet` and public testnets.
 - [Marlowe Payouts](https://github.com/input-output-hk/marlowe-payouts) - A dApp to help users discover payouts available for withdrawal from Marlowe contracts. [[Demo](https://payouts-preprod.prod.scdev.aws.iohkdev.io/)]
 - [Token Plan Prototype](https://github.com/input-output-hk/marlowe-token-plans) - A Vesting contract. [[Demo](https://token-plans-preprod.prod.scdev.aws.iohkdev.io/)]
+- [Marlowe Hackathons](contracts/marlowe-hackathons) - Challenges and solutions from Marlowe hackathons.
 
 ### Videos
 

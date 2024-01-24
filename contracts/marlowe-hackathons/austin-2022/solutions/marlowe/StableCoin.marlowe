@@ -1,0 +1,70 @@
+
+(When [
+   (Case
+      (Deposit
+         (Role "Party")
+         (Role "Party")
+         (Token "" "")
+         (ConstantParam "Stable Deposit"))
+      (When [
+         (Case
+            (Choice
+               (ChoiceId "Initial Price"
+                  (Role "Price Oracle")) [
+               (Bound 1 1000000000)])
+            (When [
+               (Case
+                  (Deposit
+                     (Role "Counterparty")
+                     (Role "Counterparty")
+                     (Token "" "")
+                     (MulValue
+                        (SubValue
+                           (ConstantParam "Reserve Ratio")
+                           (Constant 1))
+                        (ConstantParam "Stable Deposit")))
+                  (When [
+                     (Case
+                        (Choice
+                           (ChoiceId "Request Withdrawal"
+                              (Role "Party")) [
+                           (Bound 1 1)])
+                        (When [
+                           (Case
+                              (Choice
+                                 (ChoiceId "Final Price"
+                                    (Role "Price Oracle")) [
+                                 (Bound 1 1000000000)])
+                              (Pay
+                                 (Role "Party")
+                                 (Account
+                                    (Role "Counterparty"))
+                                 (Token "" "")
+                                 (AvailableMoney
+                                    (Role "Party")
+                                    (Token "" ""))
+                                 (Let "Stable Payment"
+                                    (DivValue
+                                       (MulValue
+                                          (ConstantParam "Stable Deposit")
+                                          (ChoiceValue
+                                             (ChoiceId "Initial Price"
+                                                (Role "Price Oracle"))))
+                                       (ChoiceValue
+                                          (ChoiceId "Final Price"
+                                             (Role "Price Oracle"))))
+                                    (Pay
+                                       (Role "Counterparty")
+                                       (Party
+                                          (Role "Party"))
+                                       (Token "" "")
+                                       (Cond
+                                          (ValueLE
+                                             (UseValue "Stable Payment")
+                                             (AvailableMoney
+                                                (Role "Counterparty")
+                                                (Token "" "")))
+                                          (UseValue "Stable Payment")
+                                          (AvailableMoney
+                                             (Role "Counterparty")
+                                             (Token "" ""))) Close))))] (TimeParam "Withdrawal Deadline") Close))] (TimeParam "Withdrawal Deadline") Close))] (TimeParam "Deposit Deadline") Close))] (TimeParam "Deposit Deadline") Close))] (TimeParam "Deposit Deadline") Close)
